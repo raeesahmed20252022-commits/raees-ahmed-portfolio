@@ -20,7 +20,7 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Information Card */}
-          <div className="group relative overflow-hidden bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
+              <div className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-green-400/20 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
             {/* Background gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
@@ -100,7 +100,7 @@ const Contact = () => {
           </div>
           
           {/* Contact Form Card */}
-          <div className="group relative overflow-hidden bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
+              <div className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-green-400/20 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
             {/* Background gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
