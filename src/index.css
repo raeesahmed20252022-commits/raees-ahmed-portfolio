@@ -1244,6 +1244,23 @@ button[class*="bg-green-500"]:hover {
   background-color: #059669 !important;
 }
 
+/* Force navigation active states */
+nav a[style*="background-color: #059669"] {
+  background-color: #059669 !important;
+  color: white !important;
+}
+
+/* Force all navigation links to have proper styling */
+nav a {
+  background-color: transparent !important;
+  color: #374151 !important;
+}
+
+nav a:hover {
+  background-color: #059669 !important;
+  color: white !important;
+}
+
 /* Fix for text content */
 .mobile-text {
   font-size: 0.875rem;

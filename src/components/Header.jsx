@@ -24,7 +24,11 @@ const Header = () => {
                   ? 'text-white bg-green-600' 
                   : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
-              style={{ textDecoration: 'none' }}
+              style={{ 
+                textDecoration: 'none',
+                backgroundColor: isActive('/') ? '#059669' : 'transparent',
+                color: isActive('/') ? 'white' : '#374151'
+              }}
             >
               Home
             </Link>
@@ -35,7 +39,11 @@ const Header = () => {
                   ? 'text-white bg-green-600' 
                   : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
-              style={{ textDecoration: 'none' }}
+              style={{ 
+                textDecoration: 'none',
+                backgroundColor: isActive('/about') ? '#059669' : 'transparent',
+                color: isActive('/about') ? 'white' : '#374151'
+              }}
             >
               About
             </Link>
@@ -46,7 +54,11 @@ const Header = () => {
                   ? 'text-white bg-green-600' 
                   : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
-              style={{ textDecoration: 'none' }}
+              style={{ 
+                textDecoration: 'none',
+                backgroundColor: isActive('/projects') ? '#059669' : 'transparent',
+                color: isActive('/projects') ? 'white' : '#374151'
+              }}
             >
               Projects
             </Link>
@@ -57,7 +69,11 @@ const Header = () => {
                   ? 'text-white bg-green-600' 
                   : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
-              style={{ textDecoration: 'none' }}
+              style={{ 
+                textDecoration: 'none',
+                backgroundColor: isActive('/contact') ? '#059669' : 'transparent',
+                color: isActive('/contact') ? 'white' : '#374151'
+              }}
             >
               Contact
             </Link>
