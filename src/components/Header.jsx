@@ -21,9 +21,10 @@ const Header = () => {
               to="/" 
               className={`font-medium transition-colors duration-200 px-3 py-2 rounded-lg ${
                 isActive('/') 
-                  ? 'text-green-600 bg-green-50' 
-                  : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                  ? 'text-white bg-green-600' 
+                  : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
+              style={{ textDecoration: 'none' }}
             >
               Home
             </Link>
@@ -31,9 +32,10 @@ const Header = () => {
               to="/about" 
               className={`font-medium transition-colors duration-200 px-3 py-2 rounded-lg ${
                 isActive('/about') 
-                  ? 'text-green-600 bg-green-50' 
-                  : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                  ? 'text-white bg-green-600' 
+                  : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
+              style={{ textDecoration: 'none' }}
             >
               About
             </Link>
@@ -41,9 +43,10 @@ const Header = () => {
               to="/projects" 
               className={`font-medium transition-colors duration-200 px-3 py-2 rounded-lg ${
                 isActive('/projects') 
-                  ? 'text-green-600 bg-green-50' 
-                  : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                  ? 'text-white bg-green-600' 
+                  : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
+              style={{ textDecoration: 'none' }}
             >
               Projects
             </Link>
@@ -51,9 +54,10 @@ const Header = () => {
               to="/contact" 
               className={`font-medium transition-colors duration-200 px-3 py-2 rounded-lg ${
                 isActive('/contact') 
-                  ? 'text-green-600 bg-green-50' 
-                  : 'text-gray-700 hover:text-green-600 hover:bg-green-50'
+                  ? 'text-white bg-green-600' 
+                  : 'text-gray-700 hover:text-white hover:bg-green-600'
               }`}
+              style={{ textDecoration: 'none' }}
             >
               Contact
             </Link>
