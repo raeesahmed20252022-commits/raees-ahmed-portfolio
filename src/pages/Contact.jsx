@@ -9,10 +9,10 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
-            Let's <span className="text-gray-900">Connect</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-green-600 mb-6">
+            Let's <span className="text-green-600">Connect</span>
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>

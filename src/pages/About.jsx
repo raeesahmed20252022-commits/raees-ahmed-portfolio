@@ -35,10 +35,10 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-green-600 mb-6">
               About Me
             </h1>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto mb-8"></div>
+            <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
               and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 

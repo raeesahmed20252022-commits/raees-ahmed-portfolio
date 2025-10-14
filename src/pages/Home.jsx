@@ -13,7 +13,7 @@ const Home = () => {
           <div className="space-y-8">
             <div className="animate-fadeInUp">
               <h1 className="text-6xl md:text-7xl font-bold text-white mb-4">
-                Hello I'm <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">Atif Ali</span>
+                Hello I'm <span className="text-green-400">Atif Ali</span>
               </h1>
             </div>
             <div className="animate-fadeInUp delay-200">

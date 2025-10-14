@@ -238,10 +238,10 @@ const Projects = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-green-600 mb-6">
             My Projects
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             A showcase of my diverse portfolio spanning mobile applications, e-commerce platforms,
             service applications, and utility tools. Each project demonstrates expertise in Flutter,
