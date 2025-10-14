@@ -5,21 +5,21 @@ import AppColors from '../constants/AppColors';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen mobile-viewport-fix" style={{maxWidth: '100vw', overflowX: 'hidden'}}>
-      <div className="container mobile-container-fix" style={{maxWidth: '100vw', width: '100vw', padding: '0 0.5rem'}}>
+    <div className="min-h-screen">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
         {/* Hero Section */}
-        <div className="text-center mb-16" style={{padding: '0 0.5rem'}}>
-          <h1 className="mobile-heading text-5xl font-bold text-white mb-6 animate-fadeInUp" style={{fontSize: '1.5rem', wordWrap: 'break-word'}}>
+        <div className="text-center mb-16">
+          <h1 className="text-5xl font-bold text-white mb-6 animate-fadeInUp">
             Let's <span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Connect</span>
           </h1>
-          <p className="mobile-text text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200" style={{fontSize: '0.875rem', wordWrap: 'break-word'}}>
+          <p className="text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>
         
-        <div className="responsive-grid responsive-grid-2 mobile-grid-single gap-16" style={{gridTemplateColumns: '1fr', gap: '0.5rem', width: '100%'}}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Information Card */}
-          <Card padding="large" className="mobile-full-width group relative overflow-hidden mobile-no-overlap">
+          <Card padding="large" className="group relative overflow-hidden">
             {/* Background gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
@@ -98,7 +98,7 @@ const Contact = () => {
           </Card>
           
           {/* Contact Form Card */}
-          <Card padding="large" className="mobile-full-width group relative overflow-hidden mobile-no-overlap">
+          <Card padding="large" className="group relative overflow-hidden">
             {/* Background gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             

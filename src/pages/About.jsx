@@ -31,33 +31,33 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen mobile-viewport-fix" style={{maxWidth: '100vw', overflowX: 'hidden'}}>
-      <div className="container mobile-container-fix" style={{maxWidth: '100vw', width: '100vw', padding: '0 0.5rem'}}>
-        <Card padding="large" className="mobile-full-width mobile-padding" style={{maxWidth: 'calc(100vw - 1rem)', width: 'calc(100vw - 1rem)', padding: '0.75rem'}}>
-          <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8" style={{fontSize: '1.25rem', wordWrap: 'break-word'}}>
+    <div className="min-h-screen">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+        <Card padding="large" className="p-10">
+          <h1 className="text-3xl font-bold text-text-primary mb-8">
             About Me
           </h1>
-          <p className="mobile-text text-lg text-text-secondary mb-12 leading-relaxed" style={{fontSize: '0.875rem', wordWrap: 'break-word'}}>
+          <p className="text-lg text-text-secondary mb-12 leading-relaxed">
             A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
             and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
             React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations. 
             Strong analytical and problem-solving abilities, ensuring efficient development and seamless user experiences.
           </p>
           
-          <div className="responsive-grid responsive-grid-2 mobile-grid-single" style={{gridTemplateColumns: '1fr', gap: '0.5rem', width: '100%'}}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
               <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-4">
                 Technical Skills
               </h2>
               <div className="space-y-8">
                 {technicalSkills.map((category, index) => (
-                  <div key={index} className="bg-surface mobile-padding rounded-xl mobile-no-overlap">
-                    <h3 className="font-semibold text-text-primary mb-6 mobile-text-visible">{category.category}</h3>
-                    <div className="mobile-tech-tags">
+                  <div key={index} className="bg-surface p-8 rounded-xl">
+                    <h3 className="font-semibold text-text-primary mb-6">{category.category}</h3>
+                    <div className="flex flex-wrap gap-4">
                       {category.skills.map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="mobile-tech-tag px-4 py-2 bg-primary text-white text-sm rounded-full"
+                          className="px-4 py-2 bg-primary text-white text-sm rounded-full"
                         >
                           {skill}
                         </span>
