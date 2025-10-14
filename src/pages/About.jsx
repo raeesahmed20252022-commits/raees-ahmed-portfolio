@@ -1,0 +1,146 @@
+import React from 'react';
+import Card from '../components/Card';
+import AppColors from '../constants/AppColors';
+
+const About = () => {
+  const technicalSkills = [
+    { category: 'Mobile Development', skills: ['Flutter', 'Dart'] },
+    { category: 'Frontend Development', skills: ['React', 'JavaScript', 'Tailwind CSS'] },
+    { category: 'Backend', skills: ['Node.js', 'Express.js'] },
+    { category: 'Databases', skills: ['Firebase', 'MongoDB'] },
+    { category: 'AI & Machine Learning', skills: ['OpenAI API', 'ElevenLabs', 'AI Integration'] },
+    { category: 'Design & UI/UX', skills: ['Figma', 'Design Systems', 'Product Strategy'] },
+    { category: 'Version Control', skills: ['Git', 'GitHub'] },
+    { category: 'State Management', skills: ['GetX', 'Bloc', 'Provider'] },
+    { category: 'APIs & Cloud Services', skills: ['REST APIs', 'Google Maps API', 'AI APIs'] },
+    { category: 'Architecture Patterns', skills: ['MVC', 'MVVM', 'Clean Code'] },
+    { category: 'Web Development', skills: ['React', 'Laravel', 'PHP'] }
+  ];
+
+  const softSkills = [
+    'Strong analytical & problem-solving abilities',
+    'Excellent communication & teamwork skills',
+    'Effective time management & multitasking',
+    'Passion for learning & adapting to new technologies',
+    'Creativity & innovation in software solutions'
+  ];
+
+  const certifications = [
+    'Full Stack Mobile Development – Udemy',
+    'Advanced Flutter Development – Google Developer Certification'
+  ];
+
+  return (
+    <div className="min-h-screen">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+        <Card padding="large" className="p-10">
+          <h1 className="text-3xl font-bold text-text-primary mb-8">
+            About Me
+          </h1>
+          <p className="text-lg text-text-secondary mb-12 leading-relaxed">
+            A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
+            and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
+            React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations. 
+            Strong analytical and problem-solving abilities, ensuring efficient development and seamless user experiences.
+          </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-2xl font-semibold text-text-primary mb-4">
+                Technical Skills
+              </h2>
+              <div className="space-y-8">
+                {technicalSkills.map((category, index) => (
+                  <div key={index} className="bg-surface p-8 rounded-xl">
+                    <h3 className="font-semibold text-text-primary mb-6">{category.category}</h3>
+                    <div className="flex flex-wrap gap-4">
+                      {category.skills.map((skill, skillIndex) => (
+                        <span
+                          key={skillIndex}
+                          className="px-4 py-2 bg-primary text-white text-sm rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                  Soft Skills
+                </h2>
+                <div className="bg-surface p-8 rounded-xl">
+                  <ul className="space-y-4">
+                    {softSkills.map((skill, index) => (
+                      <li key={index} className="flex items-center text-text-secondary">
+                        <span className="text-success mr-3 text-lg">✓</span>
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                  Education
+                </h2>
+                <div className="bg-surface p-8 rounded-xl">
+                  <div className="flex items-center">
+                    <span className="text-accent mr-4 text-2xl">🎓</span>
+                    <div>
+                      <p className="font-semibold text-text-primary text-lg">MSc Computer Science</p>
+                      <p className="text-text-secondary">AUST University, Abbottabad (2019)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                  Certifications
+                </h2>
+                <div className="bg-surface p-8 rounded-xl">
+                  <ul className="space-y-4">
+                    {certifications.map((cert, index) => (
+                      <li key={index} className="flex items-center text-text-secondary">
+                        <span className="text-info mr-3 text-lg">🏆</span>
+                        {cert}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div>
+                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                  Languages
+                </h2>
+                <div className="bg-surface p-8 rounded-xl">
+                  <div className="space-y-4">
+                    <div className="flex items-center text-text-secondary">
+                      <span className="text-primary mr-3 text-lg">•</span>
+                      <span className="font-medium">English</span>
+                      <span className="ml-2 text-sm">(Fluent)</span>
+                    </div>
+                    <div className="flex items-center text-text-secondary">
+                      <span className="text-primary mr-3 text-lg">•</span>
+                      <span className="font-medium">Urdu</span>
+                      <span className="ml-2 text-sm">(Native)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    </div>
+  );
+};
+
+export default About;
