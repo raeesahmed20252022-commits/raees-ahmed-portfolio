@@ -5,19 +5,19 @@ import AppColors from '../constants/AppColors';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen mobile-viewport-fix">
-      <div className="container mobile-container-fix">
+    <div className="min-h-screen mobile-viewport-fix" style={{maxWidth: '100vw', overflowX: 'hidden'}}>
+      <div className="container mobile-container-fix" style={{maxWidth: '100vw', width: '100vw', padding: '0 0.5rem'}}>
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="mobile-heading text-5xl font-bold text-white mb-6 animate-fadeInUp">
+        <div className="text-center mb-16" style={{padding: '0 0.5rem'}}>
+          <h1 className="mobile-heading text-5xl font-bold text-white mb-6 animate-fadeInUp" style={{fontSize: '1.5rem', wordWrap: 'break-word'}}>
             Let's <span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Connect</span>
           </h1>
-          <p className="mobile-text text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200">
+          <p className="mobile-text text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200" style={{fontSize: '0.875rem', wordWrap: 'break-word'}}>
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>
         
-        <div className="responsive-grid responsive-grid-2 mobile-grid-single gap-16">
+        <div className="responsive-grid responsive-grid-2 mobile-grid-single gap-16" style={{gridTemplateColumns: '1fr', gap: '0.5rem', width: '100%'}}>
           {/* Contact Information Card */}
           <Card padding="large" className="mobile-full-width group relative overflow-hidden mobile-no-overlap">
             {/* Background gradient overlay */}

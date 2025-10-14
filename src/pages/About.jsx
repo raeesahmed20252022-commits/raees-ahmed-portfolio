@@ -31,20 +31,20 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen mobile-viewport-fix">
-      <div className="container mobile-container-fix">
-        <Card padding="large" className="mobile-full-width mobile-padding">
-          <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8">
+    <div className="min-h-screen mobile-viewport-fix" style={{maxWidth: '100vw', overflowX: 'hidden'}}>
+      <div className="container mobile-container-fix" style={{maxWidth: '100vw', width: '100vw', padding: '0 0.5rem'}}>
+        <Card padding="large" className="mobile-full-width mobile-padding" style={{maxWidth: 'calc(100vw - 1rem)', width: 'calc(100vw - 1rem)', padding: '0.75rem'}}>
+          <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8" style={{fontSize: '1.25rem', wordWrap: 'break-word'}}>
             About Me
           </h1>
-          <p className="mobile-text text-lg text-text-secondary mb-12 leading-relaxed">
+          <p className="mobile-text text-lg text-text-secondary mb-12 leading-relaxed" style={{fontSize: '0.875rem', wordWrap: 'break-word'}}>
             A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
             and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
             React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations. 
             Strong analytical and problem-solving abilities, ensuring efficient development and seamless user experiences.
           </p>
           
-          <div className="responsive-grid responsive-grid-2 mobile-grid-single">
+          <div className="responsive-grid responsive-grid-2 mobile-grid-single" style={{gridTemplateColumns: '1fr', gap: '0.5rem', width: '100%'}}>
             <div>
               <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-4">
                 Technical Skills
