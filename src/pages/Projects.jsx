@@ -235,30 +235,30 @@ const Projects = () => {
   const categories = ['All', 'Mobile App', 'E-commerce', 'Service Platform', 'Job Platform', 'Real Estate', 'Utility App', 'Social Media', 'Health & Data', 'AI Platform', 'AI Tool'];
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        <h1 className="text-3xl font-bold text-text-primary mb-8 text-center">
+    <div className="min-h-screen mobile-viewport-fix">
+      <div className="container mobile-container-fix">
+        <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8 text-center">
           My Projects
         </h1>
-        
+
         <div className="text-center mb-8">
-          <p className="text-lg text-text-secondary max-w-3xl mx-auto">
-            A showcase of my diverse portfolio spanning mobile applications, e-commerce platforms, 
-            service applications, and utility tools. Each project demonstrates expertise in Flutter, 
+          <p className="mobile-text text-lg text-text-secondary max-w-3xl mx-auto">
+            A showcase of my diverse portfolio spanning mobile applications, e-commerce platforms,
+            service applications, and utility tools. Each project demonstrates expertise in Flutter,
             backend integration, and user experience optimization.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+
+        <div className="responsive-grid responsive-grid-4 mobile-grid-single gap-8 justify-items-center">
           {projects.map((project) => (
-            <Card key={project.id} padding="large" className="h-full flex flex-col text-center group relative px-4 w-full max-w-sm">
+            <Card key={project.id} padding="large" className="mobile-project-card h-full flex flex-col text-center group relative mobile-no-overlap">
               {/* Background gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               {/* Floating elements */}
               <div className="absolute top-6 right-6 w-2 h-2 bg-primary rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
               <div className="absolute top-10 right-10 w-1 h-1 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
-              
+
               <div className="flex-grow relative z-10 flex flex-col">
                 {/* Category badge */}
                 <div className="mb-8">
@@ -266,26 +266,26 @@ const Projects = () => {
                     {project.category}
                   </span>
                 </div>
-                
+
                 {/* Project title */}
-                <h3 className="text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors duration-300 px-2">
+                <h3 className="mobile-heading text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors duration-300 px-2 mobile-text-visible">
                   {project.title}
                 </h3>
-                
+
                 {/* Description */}
                 <div className="flex-grow mb-6">
-                  <p className="text-text-secondary text-sm leading-relaxed px-4">
+                  <p className="mobile-text text-text-secondary text-sm leading-relaxed px-4 mobile-text-wrap">
                     {project.description}
                   </p>
                 </div>
-                
+
                 {/* Technology tags */}
                 <div className="mb-10 px-1">
-                  <div className="flex flex-wrap justify-center gap-1 w-full">
+                  <div className="mobile-tech-tags">
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="inline-flex items-center justify-center h-5 px-2 py-0.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-medium rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap flex-shrink-0"
+                        className="mobile-tech-tag inline-flex items-center justify-center h-5 px-2 py-0.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-medium rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap flex-shrink-0"
                       >
                         {tech}
                       </span>
@@ -293,18 +293,18 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Action buttons */}
               <div className="mt-auto pt-8 border-t border-border">
                 <div className="flex flex-col space-y-3">
-                  <Button 
-                    size="small" 
-                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg hover:shadow-xl py-3"
+                  <Button
+                    size="small"
+                    className="mobile-button w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg hover:shadow-xl py-3"
                     onClick={() => handleViewDetails(project)}
                   >
                     🔍 View Details
                   </Button>
-                  <Button variant="outline" size="small" className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white shadow-lg hover:shadow-xl py-3">
+                  <Button variant="outline" size="small" className="mobile-button w-full border-2 border-primary text-primary hover:bg-primary hover:text-white shadow-lg hover:shadow-xl py-3">
                     💻 Source Code
                   </Button>
                 </div>

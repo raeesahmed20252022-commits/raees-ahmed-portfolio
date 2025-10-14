@@ -31,33 +31,33 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        <Card padding="large" className="p-10">
-          <h1 className="text-3xl font-bold text-text-primary mb-8">
+    <div className="min-h-screen mobile-viewport-fix">
+      <div className="container mobile-container-fix">
+        <Card padding="large" className="mobile-full-width mobile-padding">
+          <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8">
             About Me
           </h1>
-          <p className="text-lg text-text-secondary mb-12 leading-relaxed">
+          <p className="mobile-text text-lg text-text-secondary mb-12 leading-relaxed">
             A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
             and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
             React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations. 
             Strong analytical and problem-solving abilities, ensuring efficient development and seamless user experiences.
           </p>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="responsive-grid responsive-grid-2 mobile-grid-single">
             <div>
-              <h2 className="text-2xl font-semibold text-text-primary mb-4">
+              <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-4">
                 Technical Skills
               </h2>
               <div className="space-y-8">
                 {technicalSkills.map((category, index) => (
-                  <div key={index} className="bg-surface p-8 rounded-xl">
-                    <h3 className="font-semibold text-text-primary mb-6">{category.category}</h3>
-                    <div className="flex flex-wrap gap-4">
+                  <div key={index} className="bg-surface mobile-padding rounded-xl mobile-no-overlap">
+                    <h3 className="font-semibold text-text-primary mb-6 mobile-text-visible">{category.category}</h3>
+                    <div className="mobile-tech-tags">
                       {category.skills.map((skill, skillIndex) => (
                         <span
                           key={skillIndex}
-                          className="px-4 py-2 bg-primary text-white text-sm rounded-full"
+                          className="mobile-tech-tag px-4 py-2 bg-primary text-white text-sm rounded-full"
                         >
                           {skill}
                         </span>
@@ -70,15 +70,15 @@ const About = () => {
 
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-6">
                   Soft Skills
                 </h2>
-                <div className="bg-surface p-8 rounded-xl">
+                <div className="bg-surface mobile-padding rounded-xl mobile-no-overlap">
                   <ul className="space-y-4">
                     {softSkills.map((skill, index) => (
-                      <li key={index} className="flex items-center text-text-secondary">
+                      <li key={index} className="flex items-center text-text-secondary mobile-text-visible">
                         <span className="text-success mr-3 text-lg">✓</span>
-                        {skill}
+                        <span className="mobile-text-wrap">{skill}</span>
                       </li>
                     ))}
                   </ul>
@@ -86,30 +86,30 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-6">
                   Education
                 </h2>
-                <div className="bg-surface p-8 rounded-xl">
-                  <div className="flex items-center">
+                <div className="bg-surface mobile-padding rounded-xl mobile-no-overlap">
+                  <div className="flex items-center mobile-flex-column">
                     <span className="text-accent mr-4 text-2xl">🎓</span>
-                    <div>
-                      <p className="font-semibold text-text-primary text-lg">MSc Computer Science</p>
-                      <p className="text-text-secondary">AUST University, Abbottabad (2019)</p>
+                    <div className="mobile-text-center">
+                      <p className="font-semibold text-text-primary text-lg mobile-text-visible">MSc Computer Science</p>
+                      <p className="text-text-secondary mobile-text-visible">AUST University, Abbottabad (2019)</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-6">
                   Certifications
                 </h2>
-                <div className="bg-surface p-8 rounded-xl">
+                <div className="bg-surface mobile-padding rounded-xl mobile-no-overlap">
                   <ul className="space-y-4">
                     {certifications.map((cert, index) => (
-                      <li key={index} className="flex items-center text-text-secondary">
+                      <li key={index} className="flex items-center text-text-secondary mobile-text-visible">
                         <span className="text-info mr-3 text-lg">🏆</span>
-                        {cert}
+                        <span className="mobile-text-wrap">{cert}</span>
                       </li>
                     ))}
                   </ul>
@@ -117,17 +117,17 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-semibold text-text-primary mb-6">
+                <h2 className="mobile-heading text-2xl font-semibold text-text-primary mb-6">
                   Languages
                 </h2>
-                <div className="bg-surface p-8 rounded-xl">
+                <div className="bg-surface mobile-padding rounded-xl mobile-no-overlap">
                   <div className="space-y-4">
-                    <div className="flex items-center text-text-secondary">
+                    <div className="flex items-center text-text-secondary mobile-text-visible">
                       <span className="text-primary mr-3 text-lg">•</span>
                       <span className="font-medium">English</span>
                       <span className="ml-2 text-sm">(Fluent)</span>
                     </div>
-                    <div className="flex items-center text-text-secondary">
+                    <div className="flex items-center text-text-secondary mobile-text-visible">
                       <span className="text-primary mr-3 text-lg">•</span>
                       <span className="font-medium">Urdu</span>
                       <span className="ml-2 text-sm">(Native)</span>

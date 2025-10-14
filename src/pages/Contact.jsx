@@ -5,21 +5,21 @@ import AppColors from '../constants/AppColors';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    <div className="min-h-screen mobile-viewport-fix">
+      <div className="container mobile-container-fix">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6 animate-fadeInUp">
+          <h1 className="mobile-heading text-5xl font-bold text-white mb-6 animate-fadeInUp">
             Let's <span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Connect</span>
           </h1>
-          <p className="text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200">
+          <p className="mobile-text text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="responsive-grid responsive-grid-2 mobile-grid-single gap-16">
           {/* Contact Information Card */}
-          <Card padding="large" className="group relative overflow-hidden">
+          <Card padding="large" className="mobile-full-width group relative overflow-hidden mobile-no-overlap">
             {/* Background gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
@@ -28,7 +28,7 @@ const Contact = () => {
             <div className="absolute top-12 right-12 w-2 h-2 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
             
             <div className="relative z-10 text-center">
-              <h2 className="text-3xl font-bold text-text-primary mb-8 group-hover:text-primary transition-colors duration-300">
+              <h2 className="mobile-heading text-3xl font-bold text-text-primary mb-8 group-hover:text-primary transition-colors duration-300 mobile-text-visible">
                 📞 Contact Information
               </h2>
               
@@ -98,7 +98,7 @@ const Contact = () => {
           </Card>
           
           {/* Contact Form Card */}
-          <Card padding="large" className="group relative overflow-hidden">
+          <Card padding="large" className="mobile-full-width group relative overflow-hidden mobile-no-overlap">
             {/* Background gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
@@ -107,57 +107,57 @@ const Contact = () => {
             <div className="absolute top-12 right-12 w-2 h-2 bg-primary rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
             
             <div className="relative z-10">
-              <h2 className="text-3xl font-bold text-text-primary mb-8 text-center group-hover:text-primary transition-colors duration-300">
+              <h2 className="mobile-heading text-3xl font-bold text-text-primary mb-8 text-center group-hover:text-primary transition-colors duration-300 mobile-text-visible">
                 💬 Send Message
               </h2>
               
-              <form className="space-y-6">
+              <form className="mobile-form space-y-6">
                 <div className="animate-fadeInUp delay-300">
-                  <label className="block text-sm font-semibold text-text-primary mb-3">
+                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
                     👤 Your Name
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
                     placeholder="Enter your full name"
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-400">
-                  <label className="block text-sm font-semibold text-text-primary mb-3">
+                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
                     📧 Email Address
                   </label>
                   <input
                     type="email"
-                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
                     placeholder="your.email@example.com"
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-500">
-                  <label className="block text-sm font-semibold text-text-primary mb-3">
+                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
                     📝 Subject
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
                     placeholder="What's this about?"
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-600">
-                  <label className="block text-sm font-semibold text-text-primary mb-3">
+                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
                     💭 Message
                   </label>
                   <textarea
                     rows="5"
-                    className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
+                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
                     placeholder="Tell me about your project or how I can help..."
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-700">
-                  <Button type="submit" className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-lg py-4 shadow-xl hover:shadow-2xl">
+                  <Button type="submit" className="mobile-button w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-lg py-4 shadow-xl hover:shadow-2xl">
                     🚀 Send Message
                   </Button>
                 </div>

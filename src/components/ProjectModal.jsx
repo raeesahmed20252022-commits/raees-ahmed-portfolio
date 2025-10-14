@@ -8,23 +8,23 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="mobile-modal-fix fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mobile-full-width">
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 p-6 rounded-t-2xl">
-          <div className="flex justify-between items-start">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-2">
+        <div className="sticky top-0 bg-white border-b border-gray-200 mobile-padding rounded-t-2xl">
+          <div className="flex justify-between items-start mobile-flex-column">
+            <div className="flex-1 mobile-full-width">
+              <div className="flex items-center gap-3 mb-2 mobile-flex-column">
                 <span className="inline-block px-4 py-2 bg-gradient-to-r from-orange-400 to-red-400 text-white text-sm font-bold rounded-full">
                   {project.category}
                 </span>
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">{project.title}</h2>
-              <p className="text-lg text-gray-600">{project.description}</p>
+              <h2 className="mobile-heading text-3xl font-bold text-gray-900 mb-2 mobile-text-visible">{project.title}</h2>
+              <p className="mobile-text text-lg text-gray-600 mobile-text-wrap">{project.description}</p>
             </div>
             <button
               onClick={onClose}
-              className="ml-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+              className="mobile-touch-friendly ml-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -34,9 +34,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6">
+        <div className="mobile-padding">
           {/* Project Details */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="responsive-grid responsive-grid-2 mobile-grid-single gap-8 mb-8">
             {/* Left Column */}
             <div className="space-y-6">
               <div>
