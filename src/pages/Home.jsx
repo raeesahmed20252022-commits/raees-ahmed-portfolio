@@ -29,12 +29,12 @@ const Home = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 animate-fadeInUp delay-600">
               <Link to="/contact">
-                <button className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                   Hire Me
                 </button>
               </Link>
               <Link to="/about">
-                <button className="bg-transparent border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                   Download CV
                 </button>
               </Link>
@@ -98,12 +98,12 @@ const Home = () => {
         <div className="text-center animate-fadeInUp delay-800">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/projects">
-              <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                 🚀 View My Work
               </button>
             </Link>
             <Link to="/contact">
-              <button className="bg-green-500/20 backdrop-blur-md border border-green-400/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-500/30 transition-all duration-300 hover:scale-105">
+              <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                 💬 Get In Touch
               </button>
             </Link>

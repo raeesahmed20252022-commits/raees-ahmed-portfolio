@@ -36,7 +36,7 @@ const Contact = () => {
               
               <div className="space-y-10">
                 <div className="animate-fadeInUp delay-300 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
                     <span className="text-3xl">📞</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Phone</h3>
@@ -44,7 +44,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="animate-fadeInUp delay-400 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
                     <span className="text-3xl">✉️</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Email</h3>
@@ -52,7 +52,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="animate-fadeInUp delay-500 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🌍</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">Location</h3>
@@ -60,14 +60,14 @@ const Contact = () => {
                 </div>
 
                 <div className="animate-fadeInUp delay-600 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
                     <span className="text-3xl">🔗</span>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-6">Social Links</h3>
                   <div className="flex justify-center space-x-4">
                     <a 
                       href="https://github.com/atif1994" 
-                      className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
+                      className="px-8 py-4 bg-green-500 text-white rounded-2xl hover:bg-green-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -75,7 +75,7 @@ const Contact = () => {
                     </a>
                     <a 
                       href="https://www.linkedin.com/in/malikatifali94/" 
-                      className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
+                      className="px-8 py-4 bg-green-500 text-white rounded-2xl hover:bg-green-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -160,7 +160,7 @@ const Contact = () => {
                 </div>
                 
                 <div className="animate-fadeInUp delay-700">
-                  <button type="submit" className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                  <button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                     🚀 Send Message
                   </button>
                 </div>
