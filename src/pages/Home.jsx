@@ -29,12 +29,18 @@ const Home = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 animate-fadeInUp delay-600">
               <Link to="/contact">
-                <button className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                <button 
+                  className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  style={{backgroundColor: '#10b981', color: 'white'}}
+                >
                   Hire Me
                 </button>
               </Link>
               <Link to="/about">
-                <button className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                <button 
+                  className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                  style={{backgroundColor: '#10b981', color: 'white'}}
+                >
                   Download CV
                 </button>
               </Link>
@@ -98,12 +104,18 @@ const Home = () => {
         <div className="text-center animate-fadeInUp delay-800">
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link to="/projects">
-              <button className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <button 
+                className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                style={{backgroundColor: '#10b981', color: 'white'}}
+              >
                 🚀 View My Work
               </button>
             </Link>
             <Link to="/contact">
-              <button className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+              <button 
+                className="!bg-green-500 hover:!bg-green-600 !text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                style={{backgroundColor: '#10b981', color: 'white'}}
+              >
                 💬 Get In Touch
               </button>
             </Link>

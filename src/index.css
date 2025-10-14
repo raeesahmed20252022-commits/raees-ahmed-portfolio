@@ -1224,6 +1224,26 @@ html {
   box-sizing: border-box;
 }
 
+/* Force green button backgrounds */
+button[class*="bg-green-500"] {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+button[class*="bg-green-500"]:hover {
+  background-color: #059669 !important;
+}
+
+/* Force all green buttons */
+.bg-green-500 {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+.bg-green-500:hover {
+  background-color: #059669 !important;
+}
+
 /* Fix for text content */
 .mobile-text {
   font-size: 0.875rem;
