@@ -31,8 +31,8 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container py-16">
         <Card padding="large" className="p-10">
           <h1 className="text-3xl font-bold text-text-primary mb-8">
             About Me

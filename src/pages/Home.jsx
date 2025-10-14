@@ -6,11 +6,11 @@ import AppColors from '../constants/AppColors';
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        <div className="text-center mb-12">
+    <div className="hero-section">
+      <div className="container">
+        <div className="hero-content text-center">
           <div className="animate-fadeInUp">
-            <h1 className="text-6xl font-bold text-white mb-4 animate-float">
+            <h1 className="hero-title text-white animate-float">
               Hi, I'm <span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Atif Ali</span>
             </h1>
           </div>
@@ -20,7 +20,7 @@ const Home = () => {
             </h2>
           </div>
           <div className="animate-fadeInUp delay-400">
-            <p className="text-xl text-white max-w-4xl mx-auto leading-relaxed">
+            <p className="hero-subtitle text-white">
               A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
               and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
               React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations.
@@ -28,38 +28,38 @@ const Home = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="feature-grid">
           <Link to="/about">
-            <Card className="animate-fadeInUp delay-500 hover:rotate-1 cursor-pointer">
-              <h3 className="text-xl font-semibold text-text-primary mb-2">
+            <div className="feature-card animate-fadeInUp delay-500">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 📱 Mobile Development
               </h3>
-              <p className="text-text-secondary">
+              <p className="text-white opacity-90">
                 Expert in Flutter and Dart, creating high-performance mobile applications with optimized user experiences.
               </p>
-            </Card>
+            </div>
           </Link>
           
           <Link to="/about">
-            <Card className="animate-fadeInUp delay-600 hover:-rotate-1 cursor-pointer">
-              <h3 className="text-xl font-semibold text-text-primary mb-2">
+            <div className="feature-card animate-fadeInUp delay-600">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 ⚙️ Backend Development
               </h3>
-              <p className="text-text-secondary">
+              <p className="text-white opacity-90">
                 Proficient in Node.js, Express.js, Firebase, and MongoDB for scalable backend solutions.
               </p>
-            </Card>
+            </div>
           </Link>
           
           <Link to="/projects">
-            <Card className="animate-fadeInUp delay-700 hover:rotate-1 cursor-pointer">
-              <h3 className="text-xl font-semibold text-text-primary mb-2">
+            <div className="feature-card animate-fadeInUp delay-700">
+              <h3 className="text-xl font-semibold text-white mb-2">
                 🔌 API Integration
               </h3>
-              <p className="text-text-secondary">
+              <p className="text-white opacity-90">
                 Specialized in REST APIs, third-party integrations, and cloud services for enhanced functionality.
               </p>
-            </Card>
+            </div>
           </Link>
         </div>
         

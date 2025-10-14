@@ -235,8 +235,8 @@ const Projects = () => {
   const categories = ['All', 'Mobile App', 'E-commerce', 'Service Platform', 'Job Platform', 'Real Estate', 'Utility App', 'Social Media', 'Health & Data', 'AI Platform', 'AI Tool'];
 
   return (
-    <div className="min-h-screen mobile-viewport-fix">
-      <div className="container mobile-container-fix">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container py-16">
         <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8 text-center">
           My Projects
         </h1>

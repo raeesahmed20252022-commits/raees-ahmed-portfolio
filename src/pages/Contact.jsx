@@ -5,14 +5,14 @@ import AppColors from '../constants/AppColors';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container py-16">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-white mb-6 animate-fadeInUp">
+          <h1 className="text-5xl font-bold text-gray-900 mb-6 animate-fadeInUp">
             Let's <span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Connect</span>
           </h1>
-          <p className="text-xl text-white max-w-3xl mx-auto animate-fadeInUp delay-200">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInUp delay-200">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>
