@@ -49,13 +49,13 @@ const About = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">
+              <h2 className="text-3xl font-bold text-green-600 mb-8">
                 Technical Skills
               </h2>
               <div className="space-y-6">
                 {technicalSkills.map((category, index) => (
                   <div key={index} className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">{category.category}</h3>
+                    <h3 className="text-xl font-bold text-green-600 mb-4">{category.category}</h3>
                     <div className="flex flex-wrap gap-3">
                       {category.skills.map((skill, skillIndex) => (
                         <span key={skillIndex} className="tag tag--green">
@@ -70,13 +70,13 @@ const About = () => {
 
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-green-600 mb-6">
                   Soft Skills
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-2xl border border-green-100">
                   <ul className="space-y-4">
                     {softSkills.map((skill, index) => (
-                      <li key={index} className="flex items-center text-gray-700">
+                      <li key={index} className="flex items-center text-green-700">
                         <span className="text-green-500 mr-4 text-xl">✓</span>
                         <span className="font-medium">{skill}</span>
                       </li>
@@ -86,29 +86,29 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-green-600 mb-6">
                   Education
                 </h2>
-                <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-100">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
                   <div className="flex items-center">
-                    <span className="text-purple-500 mr-4 text-3xl">🎓</span>
+                    <span className="text-green-500 mr-4 text-3xl">🎓</span>
                     <div>
-                      <p className="text-xl font-bold text-gray-900">MSc Computer Science</p>
-                      <p className="text-gray-600">AUST University, Abbottabad (2019)</p>
+                      <p className="text-xl font-bold text-green-600">MSc Computer Science</p>
+                      <p className="text-green-700/80">AUST University, Abbottabad (2019)</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-green-600 mb-6">
                   Certifications
                 </h2>
-                <div className="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-2xl border border-yellow-100">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
                   <ul className="space-y-4">
                     {certifications.map((cert, index) => (
-                      <li key={index} className="flex items-center text-gray-700">
-                        <span className="text-yellow-500 mr-4 text-xl">🏆</span>
+                      <li key={index} className="flex items-center text-green-700">
+                        <span className="text-green-500 mr-4 text-xl">🏆</span>
                         <span className="font-medium">{cert}</span>
                       </li>
                     ))}
@@ -117,20 +117,20 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                <h2 className="text-3xl font-bold text-green-600 mb-6">
                   Languages
                 </h2>
-                <div className="bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-2xl border border-indigo-100">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
                   <div className="space-y-4">
-                    <div className="flex items-center text-gray-700">
-                      <span className="text-indigo-500 mr-4 text-xl">•</span>
+                    <div className="flex items-center text-green-700">
+                      <span className="text-green-500 mr-4 text-xl">•</span>
                       <span className="font-medium text-lg">English</span>
-                      <span className="ml-2 text-sm text-gray-500">(Fluent)</span>
+                      <span className="ml-2 text-sm text-green-700/80">(Fluent)</span>
                     </div>
-                    <div className="flex items-center text-gray-700">
-                      <span className="text-indigo-500 mr-4 text-xl">•</span>
+                    <div className="flex items-center text-green-700">
+                      <span className="text-green-500 mr-4 text-xl">•</span>
                       <span className="font-medium text-lg">Urdu</span>
-                      <span className="ml-2 text-sm text-gray-500">(Native)</span>
+                      <span className="ml-2 text-sm text-green-700/80">(Native)</span>
                     </div>
                   </div>
                 </div>

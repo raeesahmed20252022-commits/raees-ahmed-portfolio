@@ -13,7 +13,7 @@ const Contact = () => {
             Let's <span className="text-green-600">Connect</span>
           </h1>
           <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-green-700 max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>

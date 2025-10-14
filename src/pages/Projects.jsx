@@ -242,7 +242,7 @@ const Projects = () => {
             My Projects
           </h1>
           <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+          <p className="text-xl text-green-700 max-w-4xl mx-auto">
             A showcase of my diverse portfolio spanning mobile applications, e-commerce platforms,
             service applications, and utility tools. Each project demonstrates expertise in Flutter,
             backend integration, and user experience optimization.
