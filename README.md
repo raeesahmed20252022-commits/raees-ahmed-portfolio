@@ -1,6 +1,6 @@
-# Portfolio Website
+# Atif Ali - Portfolio Website
 
-A modern, responsive portfolio website built with React.js and Vite, featuring a clean design and reusable component architecture.
+A modern, responsive portfolio website showcasing my work as a Full Stack Developer with 5+ years of experience in Flutter, React, and AI-powered applications.
 
 ## Features
 
@@ -118,6 +118,17 @@ The project follows a component-based architecture with reusable widgets:
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
+
+## 📞 Contact
+
+- **Email**: malikatifali94@gmail.com
+- **Phone**: +92 314 4551419
+- **GitHub**: [github.com/atif1994](https://github.com/atif1994)
+- **LinkedIn**: [linkedin.com/in/malikatifali94](https://www.linkedin.com/in/malikatifali94/)
+
+## 🚀 Live Demo
+
+Visit the live portfolio: [Your Portfolio URL]
 
 ## License
 
