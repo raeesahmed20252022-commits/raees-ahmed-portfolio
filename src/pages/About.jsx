@@ -39,7 +39,7 @@ const About = () => {
               About Me
             </h1>
             <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
               A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
               and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
               React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations. 
@@ -49,13 +49,13 @@ const About = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-green-600 mb-8">
+              <h2 className="text-3xl font-bold text-white mb-8">
                 Technical Skills
               </h2>
               <div className="space-y-6">
                 {technicalSkills.map((category, index) => (
                   <div key={index} className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
-                    <h3 className="text-xl font-bold text-green-600 mb-4">{category.category}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{category.category}</h3>
                     <div className="flex flex-wrap gap-3">
                       {category.skills.map((skill, skillIndex) => (
                         <span key={skillIndex} className="tag tag--green">
@@ -70,13 +70,13 @@ const About = () => {
 
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-green-600 mb-6">
+                <h2 className="text-3xl font-bold text-white mb-6">
                   Soft Skills
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-2xl border border-green-100">
                   <ul className="space-y-4">
                     {softSkills.map((skill, index) => (
-                      <li key={index} className="flex items-center text-green-700">
+                      <li key={index} className="flex items-center text-gray-700">
                         <span className="text-green-500 mr-4 text-xl">✓</span>
                         <span className="font-medium">{skill}</span>
                       </li>
@@ -86,28 +86,28 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-green-600 mb-6">
+                <h2 className="text-3xl font-bold text-white mb-6">
                   Education
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
                   <div className="flex items-center">
                     <span className="text-green-500 mr-4 text-3xl">🎓</span>
                     <div>
-                      <p className="text-xl font-bold text-green-600">MSc Computer Science</p>
-                      <p className="text-green-700/80">AUST University, Abbottabad (2019)</p>
+                      <p className="text-xl font-bold text-gray-900">MSc Computer Science</p>
+                      <p className="text-gray-600">AUST University, Abbottabad (2019)</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-green-600 mb-6">
+                <h2 className="text-3xl font-bold text-white mb-6">
                   Certifications
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
                   <ul className="space-y-4">
                     {certifications.map((cert, index) => (
-                      <li key={index} className="flex items-center text-green-700">
+                      <li key={index} className="flex items-center text-gray-700">
                         <span className="text-green-500 mr-4 text-xl">🏆</span>
                         <span className="font-medium">{cert}</span>
                       </li>
@@ -117,20 +117,20 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-green-600 mb-6">
+                <h2 className="text-3xl font-bold text-white mb-6">
                   Languages
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
                   <div className="space-y-4">
-                    <div className="flex items-center text-green-700">
+                    <div className="flex items-center text-gray-700">
                       <span className="text-green-500 mr-4 text-xl">•</span>
                       <span className="font-medium text-lg">English</span>
-                      <span className="ml-2 text-sm text-green-700/80">(Fluent)</span>
+                      <span className="ml-2 text-sm text-gray-500">(Fluent)</span>
                     </div>
-                    <div className="flex items-center text-green-700">
+                    <div className="flex items-center text-gray-700">
                       <span className="text-green-500 mr-4 text-xl">•</span>
                       <span className="font-medium text-lg">Urdu</span>
-                      <span className="ml-2 text-sm text-green-700/80">(Native)</span>
+                      <span className="ml-2 text-sm text-gray-500">(Native)</span>
                     </div>
                   </div>
                 </div>
