@@ -33,13 +33,13 @@ const About = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-green-900 to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="bg-white/10 backdrop-blur-md border border-green-400/20 rounded-3xl shadow-2xl p-8 md:p-12">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-green-600 mb-6">
               About Me
             </h1>
             <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               A dynamic and detail-oriented Full Stack Developer with 5+ years of experience in designing, developing, 
               and deploying high-performance mobile applications and AI-powered platforms. Proficient in Flutter, Dart, 
               React, Firebase, and MongoDB, with expertise in creating scalable solutions using REST APIs and AI integrations. 
@@ -49,7 +49,7 @@ const About = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">
                 Technical Skills
               </h2>
               <div className="space-y-6">
@@ -70,7 +70,7 @@ const About = () => {
 
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-white mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Soft Skills
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-teal-50 p-6 rounded-2xl border border-green-100">
@@ -86,7 +86,7 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-white mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Education
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
@@ -101,7 +101,7 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-white mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Certifications
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
@@ -117,7 +117,7 @@ const About = () => {
               </div>
 
               <div>
-                <h2 className="text-3xl font-bold text-white mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Languages
                 </h2>
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl border border-green-100">
