@@ -428,6 +428,23 @@ html {
 /* Margin utilities */
 .mb-2 { margin-bottom: 0.5rem; }
 
+/* ===== Reusable UI elements ===== */
+/* Pill/Tag chips */
+.tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.tag--green {
+  background: linear-gradient(90deg, #22c55e 0%, #10b981 100%);
+  color: #ffffff;
+}
+
 /* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
 
 /* ===== PROFESSIONAL DESIGN SYSTEM ===== */

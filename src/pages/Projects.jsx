@@ -235,37 +235,37 @@ const Projects = () => {
   const categories = ['All', 'Mobile App', 'E-commerce', 'Service Platform', 'Job Platform', 'Real Estate', 'Utility App', 'Social Media', 'Health & Data', 'AI Platform', 'AI Tool'];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container py-16">
-        <h1 className="mobile-heading text-3xl font-bold text-text-primary mb-8 text-center">
-          My Projects
-        </h1>
-
-        <div className="text-center mb-8">
-          <p className="mobile-text text-lg text-text-secondary max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
+            My Projects
+          </h1>
+          <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             A showcase of my diverse portfolio spanning mobile applications, e-commerce platforms,
             service applications, and utility tools. Each project demonstrates expertise in Flutter,
             backend integration, and user experience optimization.
           </p>
         </div>
 
-        <div className="responsive-grid responsive-grid-4 mobile-grid-single gap-8 justify-items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <Card key={project.id} padding="large" className="mobile-project-card h-full flex flex-col text-center group relative mobile-no-overlap">
+            <Card key={project.id} padding="large" className="h-full flex flex-col text-center group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
               {/* Background gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               {/* Floating elements */}
               <div className="absolute top-6 right-6 w-2 h-2 bg-primary rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
               <div className="absolute top-10 right-10 w-1 h-1 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
 
               <div className="flex-grow relative z-10 flex flex-col">
-                {/* Category badge */}
-                <div className="mb-8">
-                  <span className="inline-block px-6 py-3 bg-gradient-to-r from-orange-400 to-red-400 text-white text-sm font-bold rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
-                    {project.category}
-                  </span>
-                </div>
+                    {/* Category badge */}
+                    <div className="mb-8">
+                      <span className="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+                        {project.category}
+                      </span>
+                    </div>
 
                 {/* Project title */}
                 <h3 className="mobile-heading text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors duration-300 px-2 mobile-text-visible">
@@ -282,14 +282,14 @@ const Projects = () => {
                 {/* Technology tags */}
                 <div className="mb-10 px-1">
                   <div className="mobile-tech-tags">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="mobile-tech-tag inline-flex items-center justify-center h-5 px-2 py-0.5 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-xs font-medium rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap flex-shrink-0"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                        {project.technologies.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="tag tag--green text-xs"
+                          >
+                            {tech}
+                          </span>
+                        ))}
                   </div>
                 </div>
               </div>
@@ -297,16 +297,16 @@ const Projects = () => {
               {/* Action buttons */}
               <div className="mt-auto pt-8 border-t border-border">
                 <div className="flex flex-col space-y-3">
-                  <Button
-                    size="small"
-                    className="mobile-button w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg hover:shadow-xl py-3"
-                    onClick={() => handleViewDetails(project)}
-                  >
-                    🔍 View Details
-                  </Button>
-                  <Button variant="outline" size="small" className="mobile-button w-full border-2 border-primary text-primary hover:bg-primary hover:text-white shadow-lg hover:shadow-xl py-3">
-                    💻 Source Code
-                  </Button>
+                      <Button
+                        size="small"
+                        className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl py-3"
+                        onClick={() => handleViewDetails(project)}
+                      >
+                        🔍 View Details
+                      </Button>
+                      <Button variant="outline" size="small" className="w-full border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white shadow-lg hover:shadow-xl py-3">
+                        💻 Source Code
+                      </Button>
                 </div>
               </div>
             </Card>

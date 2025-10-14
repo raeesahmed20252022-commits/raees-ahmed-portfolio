@@ -5,67 +5,69 @@ import AppColors from '../constants/AppColors';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="container py-16">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-900 mb-6 animate-fadeInUp">
-            Let's <span className="bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">Connect</span>
+          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-6">
+            Let's <span className="text-gray-900">Connect</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fadeInUp delay-200">
+          <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-emerald-600 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Information Card */}
-          <Card padding="large" className="group relative overflow-hidden">
+          <div className="group relative overflow-hidden bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
             {/* Background gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             {/* Floating elements */}
-            <div className="absolute top-6 right-6 w-3 h-3 bg-primary rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <div className="absolute top-12 right-12 w-2 h-2 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute top-6 right-6 w-4 h-4 bg-green-400 rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
+            <div className="absolute top-12 right-12 w-3 h-3 bg-emerald-400 rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute bottom-6 left-6 w-2 h-2 bg-green-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
             
             <div className="relative z-10 text-center">
-              <h2 className="mobile-heading text-3xl font-bold text-text-primary mb-8 group-hover:text-primary transition-colors duration-300 mobile-text-visible">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-8 group-hover:scale-105 transition-transform duration-300">
                 📞 Contact Information
               </h2>
               
-              <div className="space-y-8">
-                <div className="animate-fadeInUp delay-300">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-red-400 to-pink-400 rounded-full mb-4">
-                    <span className="text-2xl">📞</span>
+              <div className="space-y-10">
+                <div className="animate-fadeInUp delay-300 group/item">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">📞</span>
                   </div>
-                  <h3 className="font-semibold text-text-primary mb-2">Phone</h3>
-                  <p className="text-text-secondary text-lg">+92 314 4551419</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Phone</h3>
+                  <p className="text-lg text-gray-600 font-medium">+92 314 4551419</p>
                 </div>
                 
-                <div className="animate-fadeInUp delay-400">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mb-4">
-                    <span className="text-2xl">✉️</span>
+                <div className="animate-fadeInUp delay-400 group/item">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">✉️</span>
                   </div>
-                  <h3 className="font-semibold text-text-primary mb-2">Email</h3>
-                  <p className="text-text-secondary text-lg">malikatifali94@gmail.com</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Email</h3>
+                  <p className="text-lg text-gray-600 font-medium">malikatifali94@gmail.com</p>
                 </div>
                 
-                <div className="animate-fadeInUp delay-500">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full mb-4">
-                    <span className="text-2xl">🌍</span>
+                <div className="animate-fadeInUp delay-500 group/item">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">🌍</span>
                   </div>
-                  <h3 className="font-semibold text-text-primary mb-2">Location</h3>
-                  <p className="text-text-secondary text-lg">Islamabad, Pakistan</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">Location</h3>
+                  <p className="text-lg text-gray-600 font-medium">Islamabad, Pakistan</p>
                 </div>
 
-                <div className="animate-fadeInUp delay-600">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mb-4">
-                    <span className="text-2xl">🔗</span>
+                <div className="animate-fadeInUp delay-600 group/item">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
+                    <span className="text-3xl">🔗</span>
                   </div>
-                  <h3 className="font-semibold text-text-primary mb-4">Social Links</h3>
-                  <div className="flex justify-center space-x-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-6">Social Links</h3>
+                  <div className="flex justify-center space-x-4">
                     <a 
                       href="https://github.com/atif1994" 
-                      className="px-6 py-3 bg-gradient-to-r from-gray-800 to-gray-900 text-white rounded-full hover:shadow-lg hover:scale-110 transition-all duration-300 font-medium"
+                      className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -73,7 +75,7 @@ const Contact = () => {
                     </a>
                     <a 
                       href="https://www.linkedin.com/in/malikatifali94/" 
-                      className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full hover:shadow-lg hover:scale-110 transition-all duration-300 font-medium"
+                      className="px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl hover:from-green-700 hover:to-emerald-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -83,87 +85,88 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-border animate-fadeInUp delay-700">
-                <div className="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-2xl">
-                  <h3 className="font-bold text-text-primary mb-3 text-lg">💼 Availability</h3>
-                  <p className="text-text-secondary mb-2">
+              <div className="mt-12 pt-8 border-t border-gray-200 animate-fadeInUp delay-700">
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-2xl border border-green-100">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">💼 Availability</h3>
+                  <p className="text-gray-600 mb-2 font-medium">
                     Currently working as Flutter Developer at Tecrux Global
                   </p>
-                  <p className="text-text-secondary">
+                  <p className="text-gray-600 font-medium">
                     Open to new opportunities and freelance projects
                   </p>
                 </div>
               </div>
             </div>
-          </Card>
+          </div>
           
           {/* Contact Form Card */}
-          <Card padding="large" className="group relative overflow-hidden">
+          <div className="group relative overflow-hidden bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
             {/* Background gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             {/* Floating elements */}
-            <div className="absolute top-6 right-6 w-3 h-3 bg-accent rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <div className="absolute top-12 right-12 w-2 h-2 bg-primary rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute top-6 right-6 w-4 h-4 bg-emerald-400 rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
+            <div className="absolute top-12 right-12 w-3 h-3 bg-green-400 rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+            <div className="absolute bottom-6 left-6 w-2 h-2 bg-emerald-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
             
             <div className="relative z-10">
-              <h2 className="mobile-heading text-3xl font-bold text-text-primary mb-8 text-center group-hover:text-primary transition-colors duration-300 mobile-text-visible">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-8 text-center group-hover:scale-105 transition-transform duration-300">
                 💬 Send Message
               </h2>
               
-              <form className="mobile-form space-y-6">
+              <form className="space-y-8">
                 <div className="animate-fadeInUp delay-300">
-                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
+                  <label className="block text-lg font-bold text-gray-900 mb-4">
                     👤 Your Name
                   </label>
                   <input
                     type="text"
-                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
                     placeholder="Enter your full name"
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-400">
-                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
+                  <label className="block text-lg font-bold text-gray-900 mb-4">
                     📧 Email Address
                   </label>
                   <input
                     type="email"
-                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
                     placeholder="your.email@example.com"
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-500">
-                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
+                  <label className="block text-lg font-bold text-gray-900 mb-4">
                     📝 Subject
                   </label>
                   <input
                     type="text"
-                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
                     placeholder="What's this about?"
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-600">
-                  <label className="block text-sm font-semibold text-text-primary mb-3 mobile-text-visible">
+                  <label className="block text-lg font-bold text-gray-900 mb-4">
                     💭 Message
                   </label>
                   <textarea
                     rows="5"
-                    className="mobile-form-input w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
+                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md resize-none"
                     placeholder="Tell me about your project or how I can help..."
                   />
                 </div>
                 
                 <div className="animate-fadeInUp delay-700">
-                  <Button type="submit" className="mobile-button w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-lg py-4 shadow-xl hover:shadow-2xl">
+                  <button type="submit" className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
                     🚀 Send Message
-                  </Button>
+                  </button>
                 </div>
               </form>
             </div>
-          </Card>
+          </div>
         </div>
 
         <div className="mt-12">
