@@ -629,9 +629,8 @@ html {
     border: 1px solid #d1d5db;
     font-size: 0.875rem;
   }
-}
 
-/* Header mobile fixes */
+  /* Header mobile fixes */
   .header-nav {
     flex-direction: column;
     gap: 0.5rem;

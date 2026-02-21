@@ -123,26 +123,30 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
-            <Button 
-              className="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
-              onClick={() => window.open(project.githubUrl || '#', '_blank')}
-            >
-              <span className="mr-2">💻</span>
-              View Source Code
-            </Button>
-            <Button 
-              variant="outline" 
-              className="flex-1"
-              onClick={() => window.open(project.liveUrl || '#', '_blank')}
-            >
-              <span className="mr-2">🌐</span>
-              Live Demo
-            </Button>
+          <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200">
+            {project.githubUrl && (
+              <Button 
+                className="flex-1 min-w-[140px] bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+                onClick={() => window.open(project.githubUrl, '_blank')}
+              >
+                <span className="mr-2">💻</span>
+                View Source Code
+              </Button>
+            )}
+            {project.liveUrl && (
+              <Button 
+                variant="outline" 
+                className="flex-1 min-w-[140px] border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white"
+                onClick={() => window.open(project.liveUrl, '_blank')}
+              >
+                <span className="mr-2">🌐</span>
+                Visit Live Site
+              </Button>
+            )}
             <Button 
               variant="ghost" 
               onClick={onClose}
-              className="flex-1"
+              className="flex-1 min-w-[100px]"
             >
               <span className="mr-2">✕</span>
               Close

@@ -20,6 +20,81 @@ const Projects = () => {
 
   const projects = [
     {
+      id: 14,
+      featured: true,
+      title: 'Marham.pk',
+      description: 'Developed full-stack web platform using Next.js, React.js, and Node.js. Built responsive front-end modules, optimized SEO performance, and integrated Firebase for real-time updates.',
+      detailedDescription: 'A full-stack healthcare and doctor-booking web platform. Delivered responsive front-end modules, SEO optimization, and Firebase integration for real-time updates and scalable backend services.',
+      technologies: ['Next.js', 'React.js', 'Node.js', 'Firebase', 'SEO', 'Responsive UI'],
+      category: 'Web Platform',
+      features: [
+        'Full-stack architecture with Next.js and Node.js',
+        'Responsive front-end modules and optimized SEO',
+        'Firebase integration for real-time updates',
+        'Scalable backend and clean API design',
+      ],
+      challenges: [
+        'SEO performance for dynamic healthcare content',
+        'Real-time availability and booking updates',
+      ],
+      results: [
+        'Improved discoverability and page load performance',
+        'Real-time data sync for better user experience',
+      ],
+      role: 'Full-stack developer responsible for front-end, backend, and Firebase integration.',
+      liveUrl: 'https://www.marham.pk',
+    },
+    {
+      id: 15,
+      featured: true,
+      title: 'GoMaidz.ai',
+      description: 'Created service marketplace using Next.js (front-end) and Node.js (backend) with Firebase. Integrated Google Maps, payment gateways, and live booking notifications.',
+      detailedDescription: 'An on-demand service marketplace connecting users with cleaning and home services. Built with Next.js and Node.js, featuring Google Maps integration, multiple payment gateways, and real-time booking notifications.',
+      technologies: ['Next.js', 'Node.js', 'Firebase', 'Google Maps', 'Payment Gateways', 'Real-time Notifications'],
+      category: 'Web Platform',
+      features: [
+        'Service marketplace with search and booking',
+        'Google Maps integration for location and areas',
+        'Payment gateway integration',
+        'Live booking notifications and status updates',
+      ],
+      challenges: [
+        'Integrating multiple payment providers',
+        'Real-time notifications at scale',
+      ],
+      results: [
+        'Smooth booking flow and higher completion rates',
+        'Reliable live updates for providers and customers',
+      ],
+      role: 'Full-stack developer responsible for marketplace logic, maps, payments, and notifications.',
+      liveUrl: 'https://www.gomaids.ai',
+    },
+    {
+      id: 16,
+      featured: true,
+      title: 'Publish.jobs',
+      description: 'Engineered job publishing platform using Next.js, React.js, and Node.js. Designed admin dashboards for employers and job seekers.',
+      detailedDescription: 'A job publishing and recruitment platform built with Next.js, React.js, and Node.js. Includes admin dashboards for employers to post and manage jobs, and a modern experience for job seekers to discover and apply.',
+      technologies: ['Next.js', 'React.js', 'Node.js', 'Admin Dashboards', 'REST APIs'],
+      category: 'Web Platform',
+      features: [
+        'Job publishing and listing management',
+        'Admin dashboards for employers',
+        'Search, filters, and application tracking',
+        'Responsive front-end and API-driven backend',
+      ],
+      challenges: [
+        'Designing flexible admin workflows',
+        'Scalable job search and filtering',
+      ],
+      results: [
+        'Efficient job posting and candidate management',
+        'Clear, usable experience for job seekers',
+      ],
+      role: 'Full-stack developer responsible for platform architecture, admin dashboards, and API design.',
+      liveUrl: 'https://publish.jobs',
+    },
+    {
       id: 1,
       title: 'Notary & Notary Ping Apps',
       description: 'Secure authentication & Google Maps API integration for notary services with real-time location tracking.',
@@ -232,7 +307,86 @@ const Projects = () => {
     }
   ];
 
-  const categories = ['All', 'Mobile App', 'E-commerce', 'Service Platform', 'Job Platform', 'Real Estate', 'Utility App', 'Social Media', 'Health & Data', 'AI Platform', 'AI Tool'];
+  const categories = ['All', 'Web Platform', 'Mobile App', 'E-commerce', 'Service Platform', 'Job Platform', 'Real Estate', 'Utility App', 'Social Media', 'Health & Data', 'AI Platform', 'AI Tool'];
+
+  const featuredProjects = projects.filter((p) => p.featured);
+  const otherProjects = projects.filter((p) => !p.featured);
+
+  const renderProjectCard = (project) => (
+    <Card key={project.id} padding="large" className="h-full flex flex-col text-center group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+
+      {/* Floating elements */}
+      <div className="absolute top-6 right-6 w-2 h-2 bg-primary rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
+      <div className="absolute top-10 right-10 w-1 h-1 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+
+      <div className="flex-grow relative z-10 flex flex-col">
+        {/* Category badge */}
+        <div className="mb-8">
+          <span className="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+            {project.category}
+          </span>
+        </div>
+
+        {/* Project title */}
+        <h3 className="mobile-heading text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors duration-300 px-2 mobile-text-visible">
+          {project.title}
+        </h3>
+
+        {/* Description */}
+        <div className="flex-grow mb-6">
+          <p className="mobile-text text-text-secondary text-sm leading-relaxed px-4 mobile-text-wrap">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Technology tags */}
+        <div className="mb-10 px-1">
+          <div className="mobile-tech-tags">
+            {project.technologies.map((tech, techIndex) => (
+              <span key={techIndex} className="tag tag--green text-xs">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Action buttons */}
+      <div className="mt-auto pt-8 border-t border-border">
+        <div className="flex flex-col space-y-3">
+          <Button
+            size="small"
+            className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl py-3"
+            onClick={() => handleViewDetails(project)}
+          >
+            🔍 View Details
+          </Button>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex justify-center items-center border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white shadow-lg hover:shadow-xl py-3 rounded-lg font-semibold text-sm transition-all duration-300"
+            >
+              🌐 Visit Live Site
+            </a>
+          )}
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex justify-center items-center border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white shadow-lg hover:shadow-xl py-3 rounded-lg font-semibold text-sm transition-all duration-300"
+            >
+              💻 Source Code
+            </a>
+          )}
+        </div>
+      </div>
+    </Card>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
@@ -243,85 +397,44 @@ const Projects = () => {
           </h1>
           <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            A showcase of my diverse portfolio spanning mobile applications, e-commerce platforms,
-            service applications, and utility tools. Each project demonstrates expertise in Flutter,
-            backend integration, and user experience optimization.
+            A showcase of my work spanning web platforms, mobile applications, e-commerce,
+            and AI tools. Built with Next.js, React, Node.js, Flutter, and modern backend services.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <Card key={project.id} padding="large" className="h-full flex flex-col text-center group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-              {/* Background gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Selected Projects */}
+        {featuredProjects.length > 0 && (
+          <section className="mb-20">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 text-center">
+              Selected Projects
+            </h2>
+            <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
+              Full-stack web platforms and products I’ve built and shipped.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {featuredProjects.map((project) => renderProjectCard(project))}
+            </div>
+          </section>
+        )}
 
-              {/* Floating elements */}
-              <div className="absolute top-6 right-6 w-2 h-2 bg-primary rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
-              <div className="absolute top-10 right-10 w-1 h-1 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
+        {/* All other projects */}
+        <section>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-10 text-center">
+            More Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {otherProjects.map((project) => renderProjectCard(project))}
+          </div>
+        </section>
 
-              <div className="flex-grow relative z-10 flex flex-col">
-                    {/* Category badge */}
-                    <div className="mb-8">
-                      <span className="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
-                        {project.category}
-                      </span>
-                    </div>
-
-                {/* Project title */}
-                <h3 className="mobile-heading text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors duration-300 px-2 mobile-text-visible">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <div className="flex-grow mb-6">
-                  <p className="mobile-text text-text-secondary text-sm leading-relaxed px-4 mobile-text-wrap">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Technology tags */}
-                <div className="mb-10 px-1">
-                  <div className="mobile-tech-tags">
-                        {project.technologies.map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="tag tag--green text-xs"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Action buttons */}
-              <div className="mt-auto pt-8 border-t border-border">
-                <div className="flex flex-col space-y-3">
-                      <Button
-                        size="small"
-                        className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl py-3"
-                        onClick={() => handleViewDetails(project)}
-                      >
-                        🔍 View Details
-                      </Button>
-                      <Button variant="outline" size="small" className="w-full border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white shadow-lg hover:shadow-xl py-3">
-                        💻 Source Code
-                      </Button>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <Card padding="large" className="max-w-4xl mx-auto">
             <h3 className="text-2xl font-semibold text-text-primary mb-4">
               Project Highlights
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">13+</div>
+                <div className="text-3xl font-bold text-primary mb-2">16+</div>
                 <div className="text-text-secondary">Completed Projects</div>
               </div>
               <div className="text-center">
