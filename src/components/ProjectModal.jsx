@@ -1,161 +1,134 @@
-import React from 'react';
-import Button from './Button';
-import AppColors from '../constants/AppColors';
+import React, { useEffect } from 'react';
 
-const ProjectModal = ({ project, isOpen, onClose }) => {
-  if (!isOpen || !project) {
-    return null;
-  }
+const CAT_COLORS = {
+  'Real Estate':'#22c55e','Healthcare':'#06b6d4','Service Marketplace':'#f59e0b',
+  'Job Platform':'#6366f1','AI Platform':'#ec4899','Social / Dating App':'#ec4899',
+  'Mobile App':'#3b82f6','E-commerce':'#f97316','Service Platform':'#14b8a6',
+  'AI Tool':'#8b5cf6','Utility App':'#64748b','Social Media':'#0ea5e9',
+};
+
+export default function ProjectModal({ project, isOpen, onClose }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [isOpen]);
+
+  if (!isOpen || !project) return null;
+  const cc = CAT_COLORS[project.category] || '#6366f1';
 
   return (
-    <div className="mobile-modal-fix fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mobile-full-width">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      style={{ background:'rgba(0,0,0,0.75)', backdropFilter:'blur(10px)', WebkitBackdropFilter:'blur(10px)' }}
+      onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
+
+      <div className="relative w-full max-w-2xl overflow-y-auto rounded-2xl animate-scaleIn"
+        style={{ background:'#080e1c', border:'1px solid rgba(99,102,241,0.2)', maxHeight:'92vh', boxShadow:'0 0 60px rgba(99,102,241,0.15), 0 40px 80px rgba(0,0,0,0.6)' }}>
+
+        {/* Top accent line */}
+        <div className="rounded-t-2xl h-1 w-full" style={{ background:`linear-gradient(90deg, ${cc}, var(--indigo), var(--purple))` }} />
+
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 mobile-padding rounded-t-2xl">
-          <div className="flex justify-between items-start mobile-flex-column">
-            <div className="flex-1 mobile-full-width">
-              <div className="flex items-center gap-3 mb-2 mobile-flex-column">
-                <span className="inline-block px-4 py-2 bg-gradient-to-r from-orange-400 to-red-400 text-white text-sm font-bold rounded-full">
-                  {project.category}
-                </span>
-              </div>
-              <h2 className="mobile-heading text-3xl font-bold text-gray-900 mb-2 mobile-text-visible">{project.title}</h2>
-              <p className="mobile-text text-lg text-gray-600 mobile-text-wrap">{project.description}</p>
+        <div className="sticky top-0 px-7 pt-5 pb-5 z-10"
+          style={{ background:'#080e1c', borderBottom:'1px solid rgba(255,255,255,0.05)' }}>
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <span style={{ display:'inline-flex', alignItems:'center', padding:'.25rem .75rem', borderRadius:'9999px', fontSize:'.7rem', fontWeight:700, background:`${cc}18`, color:cc, border:`1px solid ${cc}30`, marginBottom:'.75rem' }}>
+                {project.category}
+              </span>
+              <h2 className="font-heading font-bold text-2xl" style={{ color:'#f1f5f9' }}>{project.title}</h2>
             </div>
-            <button
-              onClick={onClose}
-              className="mobile-touch-friendly ml-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+            <button onClick={onClose}
+              className="rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200"
+              style={{ width:'36px', height:'36px', background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.08)', color:'#64748b', fontSize:'1rem', cursor:'pointer', marginTop:'4px' }}
+              onMouseEnter={e=>{e.currentTarget.style.background='rgba(236,72,153,0.12)';e.currentTarget.style.color='#f472b6';}}
+              onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.05)';e.currentTarget.style.color='#64748b';}}>
+              ✕
             </button>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="mobile-padding">
-          {/* Project Details */}
-          <div className="responsive-grid responsive-grid-2 mobile-grid-single gap-8 mb-8">
-            {/* Left Column */}
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">🚀 Project Overview</h3>
-                <div className="bg-gray-50 p-4 rounded-xl">
-                  <p className="text-gray-700 leading-relaxed">
-                    {project.detailedDescription || project.description}
-                  </p>
-                </div>
-              </div>
+        {/* Body */}
+        <div className="px-7 py-6 space-y-6">
+          <div>
+            <h3 className="font-heading font-semibold mb-3 text-sm" style={{ color:'#94a3b8', textTransform:'uppercase', letterSpacing:'.08em' }}>Overview</h3>
+            <p style={{ color:'#64748b', lineHeight:1.75, fontSize:'.9rem' }}>{project.detailedDescription || project.description}</p>
+          </div>
 
-              <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">🛠️ Technologies Used</h3>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-medium rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {project.features && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">✨ Key Features</h3>
-                  <ul className="space-y-2">
-                    {project.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-green-500 mr-2 mt-1">✓</span>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+          <div>
+            <h3 className="font-heading font-semibold mb-3 text-sm" style={{ color:'#94a3b8', textTransform:'uppercase', letterSpacing:'.08em' }}>Technologies</h3>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map(t => (
+                <span key={t} style={{ padding:'.3rem .75rem', borderRadius:'9999px', fontSize:'.78rem', fontWeight:500, background:'rgba(99,102,241,0.1)', color:'#a5b4fc', border:'1px solid rgba(99,102,241,0.2)' }}>{t}</span>
+              ))}
             </div>
+          </div>
 
-            {/* Right Column */}
-            <div className="space-y-6">
+          {project.features && (
+            <div>
+              <h3 className="font-heading font-semibold mb-3 text-sm" style={{ color:'#94a3b8', textTransform:'uppercase', letterSpacing:'.08em' }}>Key Features</h3>
+              <ul className="space-y-2">
+                {project.features.map((f,i) => (
+                  <li key={i} style={{ display:'flex', alignItems:'flex-start', gap:'.625rem', color:'#64748b', fontSize:'.875rem', lineHeight:1.6 }}>
+                    <span style={{ color:cc, flexShrink:0, marginTop:'.1rem' }}>▹</span>{f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {(project.challenges || project.results) && (
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
               {project.challenges && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">🎯 Challenges Solved</h3>
-                  <div className="bg-blue-50 p-4 rounded-xl">
-                    <ul className="space-y-2">
-                      {project.challenges.map((challenge, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="text-blue-500 mr-2 mt-1">•</span>
-                          <span className="text-gray-700">{challenge}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className="rounded-xl p-4" style={{ background:'rgba(99,102,241,0.06)', border:'1px solid rgba(99,102,241,0.14)' }}>
+                  <h3 className="font-heading font-semibold text-xs mb-3" style={{ color:'#94a3b8', textTransform:'uppercase', letterSpacing:'.08em' }}>Challenges</h3>
+                  <ul className="space-y-2">{project.challenges.map((c,i) => <li key={i} style={{ color:'#64748b', fontSize:'.8rem' }}>• {c}</li>)}</ul>
                 </div>
               )}
-
               {project.results && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">📊 Results & Impact</h3>
-                  <div className="bg-green-50 p-4 rounded-xl">
-                    <ul className="space-y-2">
-                      {project.results.map((result, index) => (
-                        <li key={index} className="flex items-start">
-                          <span className="text-green-500 mr-2 mt-1">📈</span>
-                          <span className="text-gray-700">{result}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {project.role && (
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">👨‍💻 My Role</h3>
-                  <div className="bg-purple-50 p-4 rounded-xl">
-                    <p className="text-gray-700">{project.role}</p>
-                  </div>
+                <div className="rounded-xl p-4" style={{ background:'rgba(34,197,94,0.06)', border:'1px solid rgba(34,197,94,0.14)' }}>
+                  <h3 className="font-heading font-semibold text-xs mb-3" style={{ color:'#94a3b8', textTransform:'uppercase', letterSpacing:'.08em' }}>Results</h3>
+                  <ul className="space-y-2">{project.results.map((r,i) => <li key={i} style={{ color:'#64748b', fontSize:'.8rem' }}>📈 {r}</li>)}</ul>
                 </div>
               )}
             </div>
-          </div>
+          )}
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-200">
-            {project.githubUrl && (
-              <Button 
-                className="flex-1 min-w-[140px] bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
-                onClick={() => window.open(project.githubUrl, '_blank')}
-              >
-                <span className="mr-2">💻</span>
-                View Source Code
-              </Button>
-            )}
-            {project.liveUrl && (
-              <Button 
-                variant="outline" 
-                className="flex-1 min-w-[140px] border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white"
-                onClick={() => window.open(project.liveUrl, '_blank')}
-              >
-                <span className="mr-2">🌐</span>
-                Visit Live Site
-              </Button>
-            )}
-            <Button 
-              variant="ghost" 
-              onClick={onClose}
-              className="flex-1 min-w-[100px]"
-            >
-              <span className="mr-2">✕</span>
-              Close
-            </Button>
-          </div>
+          {project.role && (
+            <div className="rounded-xl p-4" style={{ background:'rgba(168,85,247,0.06)', border:'1px solid rgba(168,85,247,0.14)' }}>
+              <h3 className="font-heading font-semibold text-xs mb-2" style={{ color:'#94a3b8', textTransform:'uppercase', letterSpacing:'.08em' }}>My Role</h3>
+              <p style={{ color:'#64748b', fontSize:'.875rem' }}>{project.role}</p>
+            </div>
+          )}
+        </div>
+
+        {/* Footer buttons */}
+        <div className="px-7 pb-7 flex flex-wrap gap-3"
+          style={{ borderTop:'1px solid rgba(255,255,255,0.05)', paddingTop:'1.5rem' }}>
+          {(project.url || project.liveUrl) && (
+            <a href={project.url || project.liveUrl} target="_blank" rel="noopener noreferrer"
+              className="btn-primary flex-1 py-3 rounded-xl font-semibold text-sm text-center" style={{ minWidth:'110px', textDecoration:'none' }}>
+              🌐 Visit Live Site
+            </a>
+          )}
+          {project.appUrl && (
+            <a href={project.appUrl} target="_blank" rel="noopener noreferrer"
+              className="btn-outline flex-1 py-3 rounded-xl font-semibold text-sm text-center" style={{ minWidth:'90px', textDecoration:'none' }}>
+              📱 Open App
+            </a>
+          )}
+          {project.githubUrl && (
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+              className="btn-ghost flex-1 py-3 rounded-xl font-semibold text-sm text-center" style={{ minWidth:'90px', textDecoration:'none' }}>
+              💻 Source Code
+            </a>
+          )}
+          <button onClick={onClose} className="btn-ghost flex-1 py-3 rounded-xl font-semibold text-sm" style={{ minWidth:'70px', cursor:'pointer' }}>
+            ✕ Close
+          </button>
         </div>
       </div>
     </div>
   );
-};
-
-export default ProjectModal;
+}

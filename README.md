@@ -1,4 +1,4 @@
-# Atif Ali - Portfolio Website
+# Raees Ahmed - Portfolio Website
 
 A modern, responsive portfolio website showcasing my work as a Full Stack Developer with 5+ years of experience in Flutter, React, and AI-powered applications.
 
@@ -121,10 +121,10 @@ The project follows a component-based architecture with reusable widgets:
 
 ## 📞 Contact
 
-- **Email**: malikatifali94@gmail.com
+- **Email**: raeesahmed20252022@gmail.com
 - **Phone**: +92 314 4551419
-- **GitHub**: [github.com/atif1994](https://github.com/atif1994)
-- **LinkedIn**: [linkedin.com/in/malikatifali94](https://www.linkedin.com/in/malikatifali94/)
+- **GitHub**: [github.com/raeesahmed20252022-commits](https://github.com/raeesahmed20252022-commits)
+- **LinkedIn**: [linkedin.com/in/raees-ahmed-b32002356](https://www.linkedin.com/in/raees-ahmed-b32002356/)
 
 ## 🚀 Live Demo
 

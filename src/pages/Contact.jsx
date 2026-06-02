@@ -1,207 +1,147 @@
-import React from 'react';
-import Card from '../components/Card';
-import Button from '../components/Button';
-import AppColors from '../constants/AppColors';
+import React, { useEffect, useRef, useState } from 'react';
 
-const Contact = () => {
+function useReveal() {
+  const ref = useRef(null);
+  const [v, setV] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setV(true); obs.disconnect(); } }, { threshold: 0.08 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, v];
+}
+
+const contactItems = [
+  { icon:'📧', label:'Email', value:'raeesahmed20252022@gmail.com', href:'mailto:raeesahmed20252022@gmail.com', color:'#6366f1' },
+  { icon:'📞', label:'Phone', value:'+92 314 455 1419', href:'tel:+923144551419', color:'#a855f7' },
+  { icon:'🌍', label:'Location', value:'Islamabad, Pakistan', href:null, color:'#06b6d4' },
+  { icon:'💼', label:'LinkedIn', value:'raees-ahmed-b32002356', href:'https://www.linkedin.com/in/raees-ahmed-b32002356/', color:'#0ea5e9' },
+  { icon:'🐙', label:'GitHub', value:'github.com/raeesahmed20252022-commits', href:'https://github.com/raeesahmed20252022-commits', color:'#94a3b8' },
+];
+
+const whyMe = [
+  { icon:'🚀', title:'Production-First', desc:'I ship code that works — clean architecture, tested, and ready to scale.' },
+  { icon:'🌍', title:'Global Experience', desc:'Projects in Pakistan, UAE, and Canada — fluent in remote workflows.' },
+  { icon:'📱', title:'Full-Stack + Mobile', desc:'End-to-end: web frontend, backend APIs, and cross-platform Flutter apps.' },
+];
+
+export default function Contact() {
+  const [headRef, headV] = useReveal();
+  const [infoRef, infoV] = useReveal();
+  const [whyRef, whyV] = useReveal();
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-green-600 mb-6">
-            Let's <span className="text-green-600">Connect</span>
+    <div className="min-h-screen py-20 overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Heading */}
+        <div ref={headRef} className="text-center mb-20"
+          style={{ transition:'opacity .7s ease, transform .7s ease', opacity:headV?1:0, transform:headV?'translateY(0)':'translateY(32px)' }}>
+          <span className="badge mb-5" style={{ display:'inline-flex' }}>Contact</span>
+          <h1 className="font-heading font-extrabold mb-5"
+            style={{ fontSize:'clamp(2rem,5vw,3.5rem)', color:'#f1f5f9', lineHeight:1.1 }}>
+            Let's <span className="gradient-text">Work Together</span>
           </h1>
-          <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
+          <div className="w-16 h-1 mx-auto mb-6 rounded-full" style={{ background:'var(--grad)' }} />
+          <p style={{ color:'#64748b', maxWidth:'480px', margin:'0 auto', lineHeight:1.7 }}>
+            Open to full-time roles and select freelance projects. I usually respond within 24 hours.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Contact Information Card */}
-              <div className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-green-400/20 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
-            {/* Background gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Floating elements */}
-            <div className="absolute top-6 right-6 w-4 h-4 bg-green-400 rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <div className="absolute top-12 right-12 w-3 h-3 bg-emerald-400 rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
-            <div className="absolute bottom-6 left-6 w-2 h-2 bg-green-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
-            
-            <div className="relative z-10 text-center">
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-8 group-hover:scale-105 transition-transform duration-300">
-                📞 Contact Information
-              </h2>
-              
-              <div className="space-y-10">
-                <div className="animate-fadeInUp delay-300 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">📞</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Phone</h3>
-                  <p className="text-lg text-gray-600 font-medium">+92 314 4551419</p>
-                </div>
-                
-                <div className="animate-fadeInUp delay-400 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">✉️</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Email</h3>
-                  <p className="text-lg text-gray-600 font-medium">malikatifali94@gmail.com</p>
-                </div>
-                
-                <div className="animate-fadeInUp delay-500 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">🌍</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">Location</h3>
-                  <p className="text-lg text-gray-600 font-medium">Islamabad, Pakistan</p>
-                </div>
 
-                <div className="animate-fadeInUp delay-600 group/item">
-                  <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500 rounded-2xl mb-6 shadow-lg group-hover/item:scale-110 transition-transform duration-300">
-                    <span className="text-3xl">🔗</span>
+        {/* Main grid */}
+        <div ref={infoRef} style={{ display:'grid', gridTemplateColumns:'1fr', gap:'1.5rem', marginBottom:'4rem' }}
+          className="lg:grid-cols-2">
+
+          {/* Contact info card */}
+          <div className="glass-card rounded-2xl p-8 h-full"
+            style={{ transition:'opacity .65s ease, transform .65s ease', opacity:infoV?1:0, transform:infoV?'translateY(0)':'translateY(28px)' }}>
+            <h2 className="font-heading font-bold text-xl mb-8" style={{ color:'#f1f5f9' }}>Contact Information</h2>
+            <div className="space-y-5">
+              {contactItems.map(item => (
+                <div key={item.label} className="flex items-center gap-4 group">
+                  <div className="rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-200 group-hover:scale-110"
+                    style={{ width:'44px', height:'44px', background:`${item.color}15`, border:`1px solid ${item.color}25`, fontSize:'1.2rem' }}>
+                    {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-6">Social Links</h3>
-                  <div className="flex justify-center space-x-4">
-                    <a 
-                      href="https://github.com/atif1994" 
-                      className="px-8 py-4 !bg-green-500 !text-white rounded-2xl hover:!bg-green-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      🐙 GitHub
-                    </a>
-                    <a 
-                      href="https://www.linkedin.com/in/malikatifali94/" 
-                      className="px-8 py-4 !bg-green-500 !text-white rounded-2xl hover:!bg-green-600 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      💼 LinkedIn
-                    </a>
+                  <div>
+                    <p style={{ color:'#475569', fontSize:'.7rem', fontWeight:600, textTransform:'uppercase', letterSpacing:'.08em' }}>{item.label}</p>
+                    {item.href ? (
+                      <a href={item.href} target="_blank" rel="noopener noreferrer"
+                        style={{ color: item.color, fontSize:'.9rem', fontWeight:500, textDecoration:'none', transition:'opacity .2s' }}
+                        onMouseEnter={e=>e.target.style.opacity='.75'} onMouseLeave={e=>e.target.style.opacity='1'}>
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p style={{ color:'#e2e8f0', fontSize:'.9rem', fontWeight:500 }}>{item.value}</p>
+                    )}
                   </div>
                 </div>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-2xl p-5"
+              style={{ background:'rgba(99,102,241,0.07)', border:'1px solid rgba(99,102,241,0.15)' }}>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-2 h-2 rounded-full" style={{ background:'#22c55e', boxShadow:'0 0 6px #22c55e' }} />
+                <h3 className="font-semibold" style={{ color:'#f1f5f9', fontSize:'.9rem' }}>Available for Work</h3>
               </div>
-
-              <div className="mt-12 pt-8 border-t border-gray-200 animate-fadeInUp delay-700">
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-2xl border border-green-100">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">💼 Availability</h3>
-                  <p className="text-gray-600 mb-2 font-medium">
-                    Currently working as Flutter Developer at Tecrux Global
-                  </p>
-                  <p className="text-gray-600 font-medium">
-                    Open to new opportunities and freelance projects
-                  </p>
-                </div>
+              <p style={{ color:'#64748b', fontSize:'.85rem', marginBottom:'.75rem' }}>
+                Open to full-time roles and select freelance projects.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {['Full-time','Freelance','Remote'].map(t => (
+                  <span key={t} className="badge" style={{ fontSize:'.7rem' }}>{t}</span>
+                ))}
               </div>
             </div>
           </div>
-          
-          {/* Contact Form Card */}
-              <div className="group relative overflow-hidden bg-white/10 backdrop-blur-md border border-green-400/20 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 p-8">
-            {/* Background gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-green-50 to-emerald-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Floating elements */}
-            <div className="absolute top-6 right-6 w-4 h-4 bg-emerald-400 rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
-            <div className="absolute top-12 right-12 w-3 h-3 bg-green-400 rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
-            <div className="absolute bottom-6 left-6 w-2 h-2 bg-emerald-300 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
-            
-            <div className="relative z-10">
-              <h2 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-8 text-center group-hover:scale-105 transition-transform duration-300">
-                💬 Send Message
-              </h2>
-              
-              <form className="space-y-8">
-                <div className="animate-fadeInUp delay-300">
-                  <label className="block text-lg font-bold text-gray-900 mb-4">
-                    👤 Your Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
-                    placeholder="Enter your full name"
-                  />
-                </div>
-                
-                <div className="animate-fadeInUp delay-400">
-                  <label className="block text-lg font-bold text-gray-900 mb-4">
-                    📧 Email Address
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-                
-                <div className="animate-fadeInUp delay-500">
-                  <label className="block text-lg font-bold text-gray-900 mb-4">
-                    📝 Subject
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md"
-                    placeholder="What's this about?"
-                  />
-                </div>
-                
-                <div className="animate-fadeInUp delay-600">
-                  <label className="block text-lg font-bold text-gray-900 mb-4">
-                    💭 Message
-                  </label>
-                  <textarea
-                    rows="5"
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 bg-white shadow-sm hover:shadow-md resize-none"
-                    placeholder="Tell me about your project or how I can help..."
-                  />
-                </div>
-                
-                <div className="animate-fadeInUp delay-700">
-                  <button type="submit" className="w-full !bg-green-500 hover:!bg-green-600 !text-white font-bold text-xl py-6 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    🚀 Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
+
+          {/* Form card */}
+          <div className="glass-card rounded-2xl p-8"
+            style={{ transition:'opacity .65s ease .1s, transform .65s ease .1s', opacity:infoV?1:0, transform:infoV?'translateY(0)':'translateY(28px)' }}>
+            <h2 className="font-heading font-bold text-xl mb-8" style={{ color:'#f1f5f9' }}>Send a Message</h2>
+            <form action="mailto:raeesahmed20252022@gmail.com" method="POST" encType="text/plain" className="space-y-5">
+              <div>
+                <label style={{ display:'block', color:'#64748b', fontSize:'.8rem', fontWeight:600, textTransform:'uppercase', letterSpacing:'.06em', marginBottom:'.5rem' }}>Your Name</label>
+                <input name="name" type="text" required placeholder="John Doe" className="form-input" style={{ padding:'.75rem 1rem' }} />
+              </div>
+              <div>
+                <label style={{ display:'block', color:'#64748b', fontSize:'.8rem', fontWeight:600, textTransform:'uppercase', letterSpacing:'.06em', marginBottom:'.5rem' }}>Email Address</label>
+                <input name="email" type="email" required placeholder="john@example.com" className="form-input" style={{ padding:'.75rem 1rem' }} />
+              </div>
+              <div>
+                <label style={{ display:'block', color:'#64748b', fontSize:'.8rem', fontWeight:600, textTransform:'uppercase', letterSpacing:'.06em', marginBottom:'.5rem' }}>Subject</label>
+                <input name="subject" type="text" placeholder="Project inquiry..." className="form-input" style={{ padding:'.75rem 1rem' }} />
+              </div>
+              <div>
+                <label style={{ display:'block', color:'#64748b', fontSize:'.8rem', fontWeight:600, textTransform:'uppercase', letterSpacing:'.06em', marginBottom:'.5rem' }}>Message</label>
+                <textarea name="message" rows="5" required placeholder="Tell me about your project..." className="form-input" style={{ padding:'.75rem 1rem', resize:'none' }} />
+              </div>
+              <button type="submit" className="btn-primary w-full py-4 rounded-xl font-semibold text-base" style={{ marginTop:'.5rem' }}>
+                📩 Send Message
+              </button>
+            </form>
           </div>
         </div>
 
-        <div className="mt-12">
-          <Card padding="large" className="text-center">
-            <h3 className="text-xl font-semibold text-text-primary mb-4">
-              Why Work With Me?
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <div className="text-2xl mb-2">🚀</div>
-                <h4 className="font-medium text-text-primary mb-2">Performance Optimized</h4>
-                <p className="text-sm text-text-secondary">
-                  Reduced API response time by 40% through database optimization
-                </p>
+        {/* Why Work With Me */}
+        <div ref={whyRef} className="glass-card rounded-3xl p-10"
+          style={{ background:'rgba(99,102,241,0.04)', borderColor:'rgba(99,102,241,0.12)', transition:'opacity .6s ease, transform .6s ease', opacity:whyV?1:0, transform:whyV?'translateY(0)':'translateY(28px)' }}>
+          <h3 className="font-heading font-bold text-2xl mb-10 text-center" style={{ color:'#f1f5f9' }}>Why Work With Me?</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {whyMe.map((item, i) => (
+              <div key={item.title} className="text-center"
+                style={{ transition:`opacity .5s ease ${i*120}ms, transform .5s ease ${i*120}ms`, opacity:whyV?1:0, transform:whyV?'translateY(0)':'translateY(16px)' }}>
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h4 className="font-heading font-bold mb-2" style={{ color:'#f1f5f9' }}>{item.title}</h4>
+                <p style={{ color:'#64748b', fontSize:'.9rem', lineHeight:1.65 }}>{item.desc}</p>
               </div>
-              <div>
-                <div className="text-2xl mb-2">🔧</div>
-                <h4 className="font-medium text-text-primary mb-2">Full Stack Expertise</h4>
-                <p className="text-sm text-text-secondary">
-                  End-to-end development from mobile apps to backend services
-                </p>
-              </div>
-              <div>
-                <div className="text-2xl mb-2">📱</div>
-                <h4 className="font-medium text-text-primary mb-2">Mobile Specialist</h4>
-                <p className="text-sm text-text-secondary">
-                  5+ years experience in Flutter and cross-platform development
-                </p>
-              </div>
-            </div>
-          </Card>
+            ))}
+          </div>
         </div>
+
       </div>
     </div>
   );
-};
-
-export default Contact;
+}

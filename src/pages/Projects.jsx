@@ -1,463 +1,254 @@
-import React, { useState } from 'react';
-import Card from '../components/Card';
-import Button from '../components/Button';
+import React, { useState, useEffect, useRef } from 'react';
 import ProjectModal from '../components/ProjectModal';
-import AppColors from '../constants/AppColors';
 
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+function useReveal() {
+  const ref = useRef(null);
+  const [v, setV] = useState(false);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setV(true); obs.disconnect(); } }, { threshold: 0.05 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, v];
+}
 
-  const handleViewDetails = (project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
+const CAT_STYLES = {
+  'Real Estate':       { bg:'rgba(34,197,94,0.1)',   color:'#4ade80', border:'rgba(34,197,94,0.25)' },
+  'Healthcare':        { bg:'rgba(6,182,212,0.1)',   color:'#22d3ee', border:'rgba(6,182,212,0.25)' },
+  'Service Marketplace':{ bg:'rgba(245,158,11,0.1)', color:'#fbbf24', border:'rgba(245,158,11,0.25)' },
+  'Job Platform':      { bg:'rgba(99,102,241,0.1)',  color:'#818cf8', border:'rgba(99,102,241,0.25)' },
+  'AI Platform':       { bg:'rgba(236,72,153,0.1)',  color:'#f472b6', border:'rgba(236,72,153,0.25)' },
+  'Social / Dating App':{ bg:'rgba(236,72,153,0.1)',  color:'#f472b6', border:'rgba(236,72,153,0.25)' },
+  'Mobile App':        { bg:'rgba(59,130,246,0.1)',  color:'#60a5fa', border:'rgba(59,130,246,0.25)' },
+  'E-commerce':        { bg:'rgba(249,115,22,0.1)',  color:'#fb923c', border:'rgba(249,115,22,0.25)' },
+  'Service Platform':  { bg:'rgba(20,184,166,0.1)',  color:'#2dd4bf', border:'rgba(20,184,166,0.25)' },
+  'AI Tool':           { bg:'rgba(139,92,246,0.1)',  color:'#a78bfa', border:'rgba(139,92,246,0.25)' },
+  'Utility App':       { bg:'rgba(100,116,139,0.1)', color:'#94a3b8', border:'rgba(100,116,139,0.25)' },
+  'Social Media':      { bg:'rgba(14,165,233,0.1)',  color:'#38bdf8', border:'rgba(14,165,233,0.25)' },
+};
+const defaultStyle = { bg:'rgba(99,102,241,0.1)', color:'#818cf8', border:'rgba(99,102,241,0.25)' };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedProject(null);
-  };
+const allProjects = [
+  { id:1, featured:true, title:'Lamudi.pk', category:'Real Estate', url:'https://www.lamudi.pk',
+    description:"Pakistan's leading property listing platform. Built advanced search, filters, and dynamic front-end modules using Next.js and React.js. Optimized SEO for high-traffic pages and integrated real-time APIs.",
+    tags:['Next.js','React.js','SEO','REST APIs','High Traffic'],
+    detailedDescription:"Contributed to Pakistan's leading property platform. Built advanced search & filter modules, optimized SEO for high-traffic pages, and integrated real-time property listing APIs.",
+    features:['Advanced property search & filtering','SEO-optimized high-traffic pages','Real-time listing API integration','Responsive mobile-first UI'],
+    challenges:['Scaling search for millions of listings','Maintaining SEO with dynamic rendering'],
+    results:['Improved organic search traffic','Faster page loads with SSR'],
+    role:'Front-End Developer — Next.js, React.js, SEO optimization.' },
+  { id:2, featured:true, title:'Marham.pk', category:'Healthcare', url:'https://www.marham.pk',
+    description:"Full-stack web platform for Pakistan's largest doctor booking service. Built responsive modules with Next.js and React.js, optimized SEO, and integrated Firebase for real-time updates.",
+    tags:['Next.js','React.js','Node.js','Firebase','SEO'],
+    detailedDescription:'A full-stack healthcare and doctor-booking platform. Delivered responsive modules, SEO optimization, and Firebase integration for real-time updates.',
+    features:['Doctor search and booking flows','Real-time appointment updates','SEO-optimized content pages','Mobile-first responsive UI'],
+    challenges:['SEO for dynamic healthcare content','Real-time availability updates'],
+    results:['Improved page discoverability','Real-time data sync for better UX'],
+    role:'Full-Stack Developer — Next.js, React.js, Node.js, Firebase.' },
+  { id:3, featured:true, title:'GoMaidz.ai', category:'Service Marketplace', url:'https://www.gomaids.ai',
+    description:'AI-powered service marketplace with Next.js and Node.js. Integrated Google Maps for location-based search, payment gateways for secure transactions, and Firebase for live booking notifications.',
+    tags:['Next.js','Node.js','Firebase','Google Maps','Payments'],
+    detailedDescription:'An on-demand service marketplace connecting users with home services. Google Maps integration, multiple payment gateways, and real-time booking notifications.',
+    features:['Location-based search with Google Maps','Multiple payment gateway integration','Live booking notifications','Provider management dashboard'],
+    challenges:['Integrating multiple payment providers','Real-time notifications at scale'],
+    results:['Higher booking completion rates','Reliable live updates'],
+    role:'Full-Stack Developer — marketplace, maps, payments, notifications.' },
+  { id:4, featured:true, title:'Publish.jobs', category:'Job Platform', url:'https://publish.jobs',
+    description:'Job publishing platform with Next.js, React.js, and Node.js. Designed admin dashboards, implemented automated posting workflows, and enhanced SEO visibility.',
+    tags:['Next.js','React.js','Node.js','Automation','SEO'],
+    detailedDescription:'A job publishing and recruitment platform with admin dashboards, automated workflows, and modern UX for job seekers.',
+    features:['Job publishing and listing management','Admin dashboards for employers','Automated posting workflows','SEO-optimized job pages'],
+    challenges:['Flexible admin workflows','Scalable job search and filtering'],
+    results:['Efficient posting and candidate management','Organic traffic growth via SEO'],
+    role:'Full-Stack Developer — architecture, dashboards, API design.' },
+  { id:5, featured:true, title:'SmartCityPK', category:'Real Estate', url:'https://www.smartcitypk.com',
+    description:'Real estate portal with booking forms, property pages, and CMS modules. Fast-loading UI with Next.js and Tailwind CSS — excellent mobile and desktop experience.',
+    tags:['Next.js','Tailwind CSS','CMS','Responsive UI'],
+    detailedDescription:'A real estate information portal with booking forms, property pages, and CMS-based content. Built for performance on both mobile and desktop.',
+    features:['Property detail and booking pages','CMS-based content management','Tailwind CSS responsive UI','Fast loading with SSG'],
+    challenges:['Content management at scale','Mobile-first performance optimization'],
+    results:['Excellent mobile and desktop UX','Fast page loads with static generation'],
+    role:'Front-End Developer — Next.js, Tailwind CSS, CMS integration.' },
+  { id:6, featured:true, title:'MineChat.ai', category:'AI Platform', url:null,
+    description:'AI-powered chat marketplace connecting creators, coaches, and experts. React, Firebase, and integrated AI APIs for intelligent conversations.',
+    tags:['React','Firebase','AI APIs','Figma','Chat System'],
+    detailedDescription:'AI-powered chat marketplace with advanced AI integration, sleek design system, and user flow optimization.',
+    features:['AI-powered conversation matching','Real-time chat with Firebase','Creator dashboard with analytics','Smart conversation suggestions'],
+    challenges:['Designing intuitive AI interaction flows','Integrating multiple AI APIs'],
+    results:['50% increase in user engagement','90% conversation quality satisfaction'],
+    role:'UI/UX Designer + Developer — full-stack, AI integration.' },
+  { id:7, featured:true, title:'Moyya — Community App', category:'Social / Dating App', url:'https://moyya.co', appUrl:'https://app.moyya.co',
+    description:'Community and connection platform — social/dating PWA. Built the landing site and progressive web app with React and Node.js. Features user profiles, matchmaking, and real-time chat.',
+    tags:['React','Node.js','PWA','Real-time Chat','Community'],
+    detailedDescription:'Moyya is a community connection platform based in Germany. Built the landing site (moyya.co) and full PWA (app.moyya.co) with matchmaking and real-time messaging.',
+    features:['Progressive Web App for mobile-first UX','User profiles and matchmaking','Real-time chat and notifications','Landing site and onboarding flows'],
+    challenges:['Offline-first PWA architecture','Real-time matchmaking at scale'],
+    results:['Smooth onboarding and engagement','Reliable real-time messaging'],
+    role:'Full-Stack Developer — landing site, PWA, real-time features.' },
+  // More projects
+  { id:8, title:'Notary & Notary Ping', category:'Mobile App',
+    description:'Secure authentication & Google Maps integration for notary services with real-time location tracking.',
+    tags:['Flutter','Firebase','Google Maps','Authentication'],
+    detailedDescription:'A notary service platform with two apps — find notary services and manage requests with real-time GPS.',
+    features:['Secure authentication','Real-time GPS tracking','Notary discovery within radius','Push notifications'],
+    challenges:['Secure auth for sensitive data','Optimizing real-time location search'],
+    results:['40% faster discovery','95% user satisfaction'],
+    role:'Full-stack mobile developer.' },
+  { id:9, title:'Fidelyz & Fidelyz Seller', category:'E-commerce',
+    description:'End-to-end food ordering & tracking with seller dashboard and real-time order management.',
+    tags:['Flutter','Node.js','Firebase','REST APIs'],
+    detailedDescription:'Full food delivery ecosystem with customer app, seller dashboard, real-time tracking, and analytics.',
+    features:['Real-time order tracking with GPS','Multiple payment gateways','Restaurant analytics','Inventory management'],
+    challenges:['High-volume concurrent orders','Complex payment flows'],
+    results:['60% efficiency increase','25% fewer cancellations'],
+    role:'Lead developer — mobile app, backend, real-time tracking.' },
+  { id:10, title:'AI Voice Changer', category:'AI Tool', liveUrl:'https://ai-voice-changer.vercel.app',
+    description:'Real-time voice-to-text and text-to-voice AI web app with OpenAI Whisper and ElevenLabs.',
+    tags:['React','Tailwind CSS','Node.js','OpenAI','ElevenLabs'],
+    detailedDescription:'Real-time voice transformation — OpenAI Whisper for transcription, ElevenLabs for synthesis.',
+    features:['Voice-to-text with Whisper','Text-to-voice with ElevenLabs','Multiple language support','Waveform visualization'],
+    challenges:['Minimizing latency','Accessible UI'],
+    results:['40% latency reduction','95% transcription accuracy'],
+    role:'Product Designer + Developer.' },
+  { id:11, title:'Blog App', category:'Social Media',
+    description:'Daily blogging platform with Firebase authentication and real-time data storage.',
+    tags:['Flutter','Firebase','Authentication','Real-time'],
+    role:'Mobile Developer.' },
+  { id:12, title:'PDF to Audio Converter', category:'Utility App',
+    description:'Converts PDF documents into playable audio with Firebase storage and retrieval.',
+    tags:['Flutter','PDF Processing','Audio Conversion','Firebase'],
+    role:'Mobile Developer.' },
+];
 
-  const projects = [
-    {
-      id: 14,
-      featured: true,
-      title: 'Marham.pk',
-      description: 'Developed full-stack web platform using Next.js, React.js, and Node.js. Built responsive front-end modules, optimized SEO performance, and integrated Firebase for real-time updates.',
-      detailedDescription: 'A full-stack healthcare and doctor-booking web platform. Delivered responsive front-end modules, SEO optimization, and Firebase integration for real-time updates and scalable backend services.',
-      technologies: ['Next.js', 'React.js', 'Node.js', 'Firebase', 'SEO', 'Responsive UI'],
-      category: 'Web Platform',
-      features: [
-        'Full-stack architecture with Next.js and Node.js',
-        'Responsive front-end modules and optimized SEO',
-        'Firebase integration for real-time updates',
-        'Scalable backend and clean API design',
-      ],
-      challenges: [
-        'SEO performance for dynamic healthcare content',
-        'Real-time availability and booking updates',
-      ],
-      results: [
-        'Improved discoverability and page load performance',
-        'Real-time data sync for better user experience',
-      ],
-      role: 'Full-stack developer responsible for front-end, backend, and Firebase integration.',
-      liveUrl: 'https://www.marham.pk',
-    },
-    {
-      id: 15,
-      featured: true,
-      title: 'GoMaidz.ai',
-      description: 'Created service marketplace using Next.js (front-end) and Node.js (backend) with Firebase. Integrated Google Maps, payment gateways, and live booking notifications.',
-      detailedDescription: 'An on-demand service marketplace connecting users with cleaning and home services. Built with Next.js and Node.js, featuring Google Maps integration, multiple payment gateways, and real-time booking notifications.',
-      technologies: ['Next.js', 'Node.js', 'Firebase', 'Google Maps', 'Payment Gateways', 'Real-time Notifications'],
-      category: 'Web Platform',
-      features: [
-        'Service marketplace with search and booking',
-        'Google Maps integration for location and areas',
-        'Payment gateway integration',
-        'Live booking notifications and status updates',
-      ],
-      challenges: [
-        'Integrating multiple payment providers',
-        'Real-time notifications at scale',
-      ],
-      results: [
-        'Smooth booking flow and higher completion rates',
-        'Reliable live updates for providers and customers',
-      ],
-      role: 'Full-stack developer responsible for marketplace logic, maps, payments, and notifications.',
-      liveUrl: 'https://www.gomaids.ai',
-    },
-    {
-      id: 16,
-      featured: true,
-      title: 'Publish.jobs',
-      description: 'Engineered job publishing platform using Next.js, React.js, and Node.js. Designed admin dashboards for employers and job seekers.',
-      detailedDescription: 'A job publishing and recruitment platform built with Next.js, React.js, and Node.js. Includes admin dashboards for employers to post and manage jobs, and a modern experience for job seekers to discover and apply.',
-      technologies: ['Next.js', 'React.js', 'Node.js', 'Admin Dashboards', 'REST APIs'],
-      category: 'Web Platform',
-      features: [
-        'Job publishing and listing management',
-        'Admin dashboards for employers',
-        'Search, filters, and application tracking',
-        'Responsive front-end and API-driven backend',
-      ],
-      challenges: [
-        'Designing flexible admin workflows',
-        'Scalable job search and filtering',
-      ],
-      results: [
-        'Efficient job posting and candidate management',
-        'Clear, usable experience for job seekers',
-      ],
-      role: 'Full-stack developer responsible for platform architecture, admin dashboards, and API design.',
-      liveUrl: 'https://publish.jobs',
-    },
-    {
-      id: 1,
-      title: 'Notary & Notary Ping Apps',
-      description: 'Secure authentication & Google Maps API integration for notary services with real-time location tracking.',
-      detailedDescription: 'A comprehensive notary service platform consisting of two interconnected mobile applications. The main Notary app allows users to find and connect with notary services, while the Notary Ping app enables notary professionals to manage their services and respond to requests.',
-      technologies: ['Flutter', 'Firebase', 'Google Maps API', 'Authentication'],
-      category: 'Mobile App',
-      features: [
-        'Secure user authentication and verification',
-        'Real-time location tracking with Google Maps integration',
-        'Notary service discovery within specified radius',
-        'Push notifications for service requests',
-        'Rating and review system',
-        'Secure document handling and verification'
-      ],
-      challenges: [
-        'Implementing secure authentication for sensitive notary services',
-        'Optimizing location-based search performance',
-        'Ensuring real-time communication between apps',
-        'Managing secure document uploads and verification'
-      ],
-      results: [
-        '40% faster notary service discovery',
-        '95% user satisfaction rate',
-        'Reduced average response time to 15 minutes',
-        'Secure document handling with zero data breaches'
-      ],
-      role: 'Full-stack mobile developer responsible for architecture, development, and deployment of both applications.',
-      githubUrl: 'https://github.com/atif1994/notary-apps',
-      liveUrl: 'https://play.google.com/store/apps/details?id=com.notary.app'
-    },
-    {
-      id: 2,
-      title: 'Fidelyz & Fidelyz Seller App',
-      description: 'End-to-end food ordering & tracking system with seller dashboard and real-time order management.',
-      detailedDescription: 'A comprehensive food delivery ecosystem with customer-facing app and seller management dashboard. Features real-time order tracking, payment processing, and advanced analytics for restaurant partners.',
-      technologies: ['Flutter', 'Node.js', 'Firebase', 'REST APIs'],
-      category: 'E-commerce',
-      features: [
-        'Real-time order tracking with GPS integration',
-        'Multiple payment gateway integration',
-        'Advanced restaurant analytics dashboard',
-        'Push notifications for order updates',
-        'Rating and review system',
-        'Inventory management for restaurants'
-      ],
-      challenges: [
-        'Handling high-volume concurrent orders during peak hours',
-        'Implementing real-time tracking with minimal battery drain',
-        'Managing complex payment flows across multiple gateways',
-        'Optimizing database queries for analytics dashboard'
-      ],
-      results: [
-        '60% increase in order processing efficiency',
-        '25% reduction in order cancellation rate',
-        '90% customer satisfaction with delivery tracking',
-        '50% faster order preparation time for restaurants'
-      ],
-      role: 'Lead developer responsible for mobile app architecture, backend API development, and real-time tracking implementation.',
-      githubUrl: 'https://github.com/atif1994/fidelyz-apps',
-      liveUrl: 'https://play.google.com/store/apps/details?id=com.fidelyz.app'
-    },
-    {
-      id: 3,
-      title: 'GoMaids & GoMaids Provider',
-      description: 'On-demand maid service platform within a 5km radius with provider management system.',
-      detailedDescription: 'A comprehensive on-demand cleaning service platform connecting customers with professional cleaners within a 5km radius. Features real-time booking, GPS tracking, and comprehensive provider management.',
-      technologies: ['Flutter', 'Google Maps API', 'Firebase', 'Location Services'],
-      category: 'Service Platform',
-      features: [
-        'Real-time service provider matching within 5km radius',
-        'GPS tracking for service providers and customers',
-        'Advanced scheduling and booking system',
-        'Secure payment processing with multiple options',
-        'Rating and review system for quality assurance',
-        'Provider earnings tracking and analytics'
-      ],
-      challenges: [
-        'Optimizing location-based matching algorithms',
-        'Managing real-time availability updates',
-        'Implementing secure payment processing',
-        'Ensuring reliable GPS tracking in various network conditions'
-      ],
-      results: [
-        '35% faster service matching within radius',
-        '80% customer retention rate',
-        '45% increase in provider earnings',
-        '95% on-time service delivery rate'
-      ],
-      role: 'Full-stack developer responsible for mobile app development, location services integration, and provider management system.',
-      githubUrl: 'https://github.com/atif1994/gomaids-apps',
-      liveUrl: 'https://play.google.com/store/apps/details?id=com.gomaids.app'
-    },
-    {
-      id: 4,
-      title: 'Publish.jobs.com (PJ App)',
-      description: 'Job listing platform similar to LinkedIn/Indeed with advanced filtering and application tracking.',
-      technologies: ['Flutter', 'Node.js', 'MongoDB', 'REST APIs'],
-      category: 'Job Platform'
-    },
-    {
-      id: 5,
-      title: 'Reel Shoppers',
-      description: 'A full-featured online shopping application with cart, checkout, search, categories, and payment integration.',
-      technologies: ['Flutter', 'Payment Gateway', 'Firebase', 'E-commerce APIs'],
-      category: 'E-commerce'
-    },
-    {
-      id: 6,
-      title: 'LeadVala App',
-      description: 'A property listing and lead management app with features like property posting, filtering, image galleries, and lead tracking.',
-      technologies: ['Flutter', 'Firebase', 'Image Processing', 'Lead Management'],
-      category: 'Real Estate'
-    },
-    {
-      id: 7,
-      title: 'Real-State-Mobile App',
-      description: 'Property-focused mobile app with features like property search, map view, saved listings, and user chat.',
-      technologies: ['Flutter', 'Google Maps API', 'Firebase', 'Chat Integration'],
-      category: 'Real Estate'
-    },
-    {
-      id: 8,
-      title: 'PDF to Audio Converter',
-      description: 'A tool that converts PDF documents into playable audio, with Firebase integration for audio file storage and retrieval.',
-      technologies: ['Flutter', 'PDF Processing', 'Audio Conversion', 'Firebase'],
-      category: 'Utility App'
-    },
-    {
-      id: 9,
-      title: 'Blog-App',
-      description: 'A daily blogging platform where users can read, write, and comment on daily life blogs. Integrated with Firebase for authentication and data storage.',
-      technologies: ['Flutter', 'Firebase', 'Authentication', 'Real-time Updates'],
-      category: 'Social Media'
-    },
-    {
-      id: 10,
-      title: 'COVID-19 App',
-      description: 'Real-time COVID-19 data visualization app with statistics, trends, and health guidelines.',
-      technologies: ['Flutter', 'Data Visualization', 'REST APIs', 'Real-time Data'],
-      category: 'Health & Data'
-    },
-    {
-      id: 11,
-      title: 'Social Media App',
-      description: 'Interactive blogging platform with Firebase backend for social interactions and content sharing.',
-      technologies: ['Flutter', 'Firebase', 'Social Features', 'Content Management'],
-      category: 'Social Media'
-    },
-    {
-      id: 12,
-      title: 'MineChat.ai',
-      description: 'AI-powered chat marketplace connecting creators, coaches, and experts with smart conversations and sleek design.',
-      detailedDescription: 'A revolutionary AI-powered chat marketplace that connects creators, coaches, and experts with users through intelligent conversations. Features advanced AI integration, sleek design system, and comprehensive user flow optimization.',
-      technologies: ['Figma', 'React', 'Firebase', 'AI APIs'],
-      category: 'AI Platform',
-      features: [
-        'AI-powered conversation matching and optimization',
-        'Comprehensive design system with Figma components',
-        'Real-time chat functionality with Firebase integration',
-        'Advanced user onboarding and payment flows',
-        'Creator dashboard with analytics and insights',
-        'Smart conversation suggestions and AI assistance'
-      ],
-      challenges: [
-        'Designing intuitive user flows for complex AI interactions',
-        'Creating scalable design system for rapid development',
-        'Integrating multiple AI APIs for optimal conversation quality',
-        'Ensuring seamless payment processing for marketplace transactions'
-      ],
-      results: [
-        '50% increase in user engagement through AI optimization',
-        '90% user satisfaction with conversation quality',
-        '30% faster onboarding process with improved UX',
-        'Zero design inconsistencies across all platform components'
-      ],
-      role: 'UI/UX Designer + Product Strategist responsible for full design system creation, user flow design, and developer handoff coordination.',
-      githubUrl: 'https://github.com/atif1994/minechat-ai',
-      liveUrl: 'https://minechat.ai'
-    },
-    {
-      id: 13,
-      title: 'AI Voice Changer',
-      description: 'Real-time voice-to-text and text-to-voice AI web app with OpenAI Whisper integration and ElevenLabs voice output.',
-      detailedDescription: 'An innovative AI-powered voice transformation web application featuring real-time voice-to-text transcription using OpenAI Whisper and high-quality text-to-voice synthesis with ElevenLabs. Focuses on low-latency processing and accessibility.',
-      technologies: ['React', 'Tailwind CSS', 'Node.js', 'OpenAI', 'ElevenLabs'],
-      category: 'AI Tool',
-      features: [
-        'Real-time voice-to-text transcription with OpenAI Whisper',
-        'High-quality text-to-voice synthesis with ElevenLabs',
-        'Multiple language support and voice selection',
-        'Waveform visualization for audio processing',
-        'Clean, accessible React-based UI',
-        'Low-latency processing for real-time applications'
-      ],
-      challenges: [
-        'Minimizing latency for real-time voice processing',
-        'Optimizing audio quality while maintaining performance',
-        'Implementing accessible UI for diverse user needs',
-        'Managing API rate limits and cost optimization'
-      ],
-      results: [
-        '40% reduction in transcription latency',
-        '95% accuracy in voice-to-text conversion',
-        'Seamless real-time processing with minimal delays',
-        'Fully accessible interface meeting WCAG guidelines'
-      ],
-      role: 'Product Designer + Developer responsible for full-stack development, UI/UX design, and AI integration optimization.',
-      githubUrl: 'https://github.com/atif1994/ai-voice-changer',
-      liveUrl: 'https://ai-voice-changer.vercel.app'
-    }
-  ];
+function ProjectCard({ project, index }) {
+  const ref = useRef(null);
+  const [v, setV] = useState(false);
+  const [hovering, setHovering] = useState(false);
+  const [modal, setModal] = useState(false);
 
-  const categories = ['All', 'Web Platform', 'Mobile App', 'E-commerce', 'Service Platform', 'Job Platform', 'Real Estate', 'Utility App', 'Social Media', 'Health & Data', 'AI Platform', 'AI Tool'];
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setV(true); obs.disconnect(); } }, { threshold: 0.08 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
-  const featuredProjects = projects.filter((p) => p.featured);
-  const otherProjects = projects.filter((p) => !p.featured);
+  const cs = CAT_STYLES[project.category] || defaultStyle;
 
-  const renderProjectCard = (project) => (
-    <Card key={project.id} padding="large" className="h-full flex flex-col text-center group relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-      {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-emerald-50 to-green-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+  return (
+    <>
+      <div ref={ref} className="project-card flex flex-col"
+        style={{ borderRadius:'1.25rem', transition:`opacity .55s ease ${index*130}ms, transform .55s ease ${index*130}ms`, opacity:v?1:0, transform:v?'translateY(0)':'translateY(28px)', minHeight:'300px' }}
+        onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}>
 
-      {/* Floating elements */}
-      <div className="absolute top-6 right-6 w-2 h-2 bg-primary rounded-full opacity-20 group-hover:opacity-60 transition-opacity duration-300"></div>
-      <div className="absolute top-10 right-10 w-1 h-1 bg-accent rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
-
-      <div className="flex-grow relative z-10 flex flex-col">
-        {/* Category badge */}
-        <div className="mb-8">
-          <span className="inline-block px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg transform rotate-2 group-hover:rotate-0 transition-transform duration-300">
+        {/* Category */}
+        <div className="p-6 pb-0">
+          <span style={{ display:'inline-flex', alignItems:'center', padding:'.25rem .75rem', borderRadius:'9999px', fontSize:'.7rem', fontWeight:700, background:cs.bg, color:cs.color, border:`1px solid ${cs.border}`, letterSpacing:'.04em' }}>
             {project.category}
           </span>
         </div>
 
-        {/* Project title */}
-        <h3 className="mobile-heading text-lg font-bold text-text-primary mb-6 leading-tight group-hover:text-primary transition-colors duration-300 px-2 mobile-text-visible">
-          {project.title}
-        </h3>
+        {/* Content */}
+        <div className="p-6 flex flex-col flex-grow">
+          <h3 className="font-heading font-bold text-lg mb-3" style={{ color: hovering ? '#c4b5fd' : '#f1f5f9', transition:'color .2s' }}>{project.title}</h3>
+          <p style={{ color:'#64748b', fontSize:'.875rem', lineHeight:1.7, flexGrow:1, marginBottom:'1rem' }}>{project.description}</p>
 
-        {/* Description */}
-        <div className="flex-grow mb-6">
-          <p className="mobile-text text-text-secondary text-sm leading-relaxed px-4 mobile-text-wrap">
-            {project.description}
+          <div className="flex flex-wrap gap-1.5 mb-5">
+            {project.tags.map(t => (
+              <span key={t} style={{ padding:'.2rem .55rem', borderRadius:'9999px', fontSize:'.68rem', fontWeight:500, background:'rgba(99,102,241,0.1)', color:'#a5b4fc', border:'1px solid rgba(99,102,241,0.18)' }}>{t}</span>
+            ))}
+          </div>
+
+          <div style={{ display:'flex', gap:'.625rem', marginTop:'auto', flexWrap:'wrap' }}>
+            <button onClick={() => setModal(true)} className="btn-primary flex-1 py-2.5 rounded-xl" style={{ fontSize:'.82rem', fontWeight:600, minWidth:'100px' }}>
+              🔍 Details
+            </button>
+            {(project.url || project.liveUrl) && (
+              <a href={project.url || project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-outline flex-1 py-2.5 rounded-xl" style={{ fontSize:'.82rem', fontWeight:600, textDecoration:'none', textAlign:'center', minWidth:'80px' }}>
+                🌐 Live
+              </a>
+            )}
+            {project.githubUrl && (
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn-ghost flex-1 py-2.5 rounded-xl" style={{ fontSize:'.82rem', fontWeight:600, textDecoration:'none', textAlign:'center', minWidth:'80px' }}>
+                💻 Code
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {modal && <ProjectModal project={project} isOpen={modal} onClose={() => setModal(false)} />}
+    </>
+  );
+}
+
+export default function Projects() {
+  const [headRef, headV] = useReveal();
+  const [featRef, featV] = useReveal();
+  const [moreRef, moreV] = useReveal();
+  const [statsRef, statsV] = useReveal();
+
+  const featured = allProjects.filter(p => p.featured);
+  const more = allProjects.filter(p => !p.featured);
+
+  return (
+    <div className="min-h-screen py-20 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Heading */}
+        <div ref={headRef} className="text-center mb-20"
+          style={{ transition:'opacity .7s ease, transform .7s ease', opacity:headV?1:0, transform:headV?'translateY(0)':'translateY(32px)' }}>
+          <span className="badge mb-5" style={{ display:'inline-flex' }}>Portfolio</span>
+          <h1 className="font-heading font-extrabold mb-5"
+            style={{ fontSize:'clamp(2.25rem,5vw,3.75rem)', color:'#f1f5f9', lineHeight:1.1 }}>
+            Selected <span className="gradient-text">Work</span>
+          </h1>
+          <div className="w-16 h-1 mx-auto mb-6 rounded-full" style={{ background:'var(--grad)' }} />
+          <p style={{ color:'#64748b', maxWidth:'520px', margin:'0 auto', lineHeight:1.7 }}>
+            Production apps and platforms I've built and shipped — trusted by real users across Pakistan, UAE, and Canada.
           </p>
         </div>
 
-        {/* Technology tags */}
-        <div className="mb-10 px-1">
-          <div className="mobile-tech-tags">
-            {project.technologies.map((tech, techIndex) => (
-              <span key={techIndex} className="tag tag--green text-xs">
-                {tech}
-              </span>
+        {/* Featured */}
+        <div ref={featRef} className="mb-20">
+          <div className="flex items-center gap-4 mb-8"
+            style={{ transition:'opacity .5s ease, transform .5s ease', opacity:featV?1:0, transform:featV?'translateX(0)':'translateX(-16px)' }}>
+            <h2 className="font-heading font-bold text-2xl" style={{ color:'#f1f5f9' }}>Featured Projects</h2>
+            <div className="flex-1 h-px" style={{ background:'linear-gradient(to right, rgba(99,102,241,0.3), transparent)' }} />
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))', gap:'1.25rem' }}>
+            {featured.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
+          </div>
+        </div>
+
+        {/* More */}
+        <div ref={moreRef} className="mb-20">
+          <div className="flex items-center gap-4 mb-8"
+            style={{ transition:'opacity .5s ease, transform .5s ease', opacity:moreV?1:0, transform:moreV?'translateX(0)':'translateX(-16px)' }}>
+            <h2 className="font-heading font-bold text-2xl" style={{ color:'#f1f5f9' }}>More Projects</h2>
+            <div className="flex-1 h-px" style={{ background:'linear-gradient(to right, rgba(99,102,241,0.3), transparent)' }} />
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))', gap:'1.25rem' }}>
+            {more.map((p, i) => <ProjectCard key={p.id} project={p} index={i} />)}
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div ref={statsRef} className="glass-card rounded-3xl p-10 text-center"
+          style={{ transition:'opacity .6s ease, transform .6s ease', opacity:statsV?1:0, transform:statsV?'translateY(0)':'translateY(24px)', background:'rgba(99,102,241,0.05)', borderColor:'rgba(99,102,241,0.15)' }}>
+          <h3 className="font-heading font-bold text-2xl mb-10" style={{ color:'#f1f5f9' }}>By the Numbers</h3>
+          <div className="grid grid-cols-3 gap-8">
+            {[['16+','Projects Shipped'],['5+','Years Experience'],['3','Countries']].map(([v,l]) => (
+              <div key={l}>
+                <div className="font-heading font-extrabold mb-2" style={{ fontSize:'2.5rem', background:'var(--grad-text)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>{v}</div>
+                <div style={{ color:'#64748b', fontSize:'.85rem' }}>{l}</div>
+              </div>
             ))}
           </div>
         </div>
+
       </div>
-
-      {/* Action buttons */}
-      <div className="mt-auto pt-8 border-t border-border">
-        <div className="flex flex-col space-y-3">
-          <Button
-            size="small"
-            className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-lg hover:shadow-xl py-3"
-            onClick={() => handleViewDetails(project)}
-          >
-            🔍 View Details
-          </Button>
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex justify-center items-center border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white shadow-lg hover:shadow-xl py-3 rounded-lg font-semibold text-sm transition-all duration-300"
-            >
-              🌐 Visit Live Site
-            </a>
-          )}
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full inline-flex justify-center items-center border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white shadow-lg hover:shadow-xl py-3 rounded-lg font-semibold text-sm transition-all duration-300"
-            >
-              💻 Source Code
-            </a>
-          )}
-        </div>
-      </div>
-    </Card>
-  );
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-green-600 mb-6">
-            My Projects
-          </h1>
-          <div className="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            A showcase of my work spanning web platforms, mobile applications, e-commerce,
-            and AI tools. Built with Next.js, React, Node.js, Flutter, and modern backend services.
-          </p>
-        </div>
-
-        {/* Selected Projects */}
-        {featuredProjects.length > 0 && (
-          <section className="mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2 text-center">
-              Selected Projects
-            </h2>
-            <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
-              Full-stack web platforms and products I’ve built and shipped.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {featuredProjects.map((project) => renderProjectCard(project))}
-            </div>
-          </section>
-        )}
-
-        {/* All other projects */}
-        <section>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-10 text-center">
-            More Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {otherProjects.map((project) => renderProjectCard(project))}
-          </div>
-        </section>
-
-        <div className="text-center mt-16">
-          <Card padding="large" className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-semibold text-text-primary mb-4">
-              Project Highlights
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">16+</div>
-                <div className="text-text-secondary">Completed Projects</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">5+</div>
-                <div className="text-text-secondary">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">40%</div>
-                <div className="text-text-secondary">API Response Time Reduction</div>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </div>
-
-      {/* Project Modal */}
-      <ProjectModal 
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
     </div>
   );
-};
-
-export default Projects;
+}
