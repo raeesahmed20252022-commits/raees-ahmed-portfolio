@@ -122,13 +122,13 @@ The project follows a component-based architecture with reusable widgets:
 ## 📞 Contact
 
 - **Email**: raeesahmed20252022@gmail.com
-- **Phone**: +92 314 4551419
-- **GitHub**: [github.com/raeesahmed20252022-commits](https://github.com/raeesahmed20252022-commits)
+- **Phone**: 0317 5639776
+- **GitHub**: [raees-ahmed-portfolio](https://github.com/raeesahmed20252022-commits/raees-ahmed-portfolio)
 - **LinkedIn**: [linkedin.com/in/raees-ahmed-b32002356](https://www.linkedin.com/in/raees-ahmed-b32002356/)
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [Your Portfolio URL]
+Visit the live portfolio: [raeesahmed20252022-commits.github.io/raees-ahmed-portfolio](https://raeesahmed20252022-commits.github.io/raees-ahmed-portfolio/)
 
 ## License
 

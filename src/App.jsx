@@ -50,7 +50,7 @@ function AppInner() {
 
 function App() {
   return (
-    <Router basename="/portfolio">
+    <Router basename="/raees-ahmed-portfolio">
       <div className="min-h-screen flex flex-col">
         <AppInner />
       </div>

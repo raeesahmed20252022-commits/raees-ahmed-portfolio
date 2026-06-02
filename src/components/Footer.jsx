@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const links = [['Home','/'],['About','/about'],['Projects','/projects'],['Contact','/contact']];
 const socials = [
-  { icon:'🐙', href:'https://github.com/raeesahmed20252022-commits', label:'GitHub' },
+  { icon:'🐙', href:'https://github.com/raeesahmed20252022-commits/raees-ahmed-portfolio', label:'GitHub' },
   { icon:'💼', href:'https://www.linkedin.com/in/raees-ahmed-b32002356/', label:'LinkedIn' },
   { icon:'📧', href:'mailto:raeesahmed20252022@gmail.com', label:'Email' },
 ];

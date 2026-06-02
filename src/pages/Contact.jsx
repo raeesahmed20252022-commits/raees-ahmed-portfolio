@@ -14,10 +14,10 @@ function useReveal() {
 
 const contactItems = [
   { icon:'📧', label:'Email', value:'raeesahmed20252022@gmail.com', href:'mailto:raeesahmed20252022@gmail.com', color:'#6366f1' },
-  { icon:'📞', label:'Phone', value:'+92 314 455 1419', href:'tel:+923144551419', color:'#a855f7' },
+  { icon:'📞', label:'Phone', value:'0317 5639776', href:'tel:+923175639776', color:'#a855f7' },
   { icon:'🌍', label:'Location', value:'Islamabad, Pakistan', href:null, color:'#06b6d4' },
   { icon:'💼', label:'LinkedIn', value:'raees-ahmed-b32002356', href:'https://www.linkedin.com/in/raees-ahmed-b32002356/', color:'#0ea5e9' },
-  { icon:'🐙', label:'GitHub', value:'github.com/raeesahmed20252022-commits', href:'https://github.com/raeesahmed20252022-commits', color:'#94a3b8' },
+  { icon:'🐙', label:'GitHub', value:'raees-ahmed-portfolio', href:'https://github.com/raeesahmed20252022-commits/raees-ahmed-portfolio', color:'#94a3b8' },
 ];
 
 const whyMe = [
